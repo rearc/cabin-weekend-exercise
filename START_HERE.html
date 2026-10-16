@@ -129,7 +129,7 @@ section.block.alt { background: var(--surface-alt); }
 .two-ideas { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
 .idea { border-top: 1px solid var(--hair); padding-top: 18px; }
 .idea p { color: var(--soft); margin: 8px 0 0; }
-.loop { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: step; position: relative; }
+.loop { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: step; position: relative; }
 .loop li { list-style: none; background: var(--terminal); border: 1px solid var(--hair); border-radius: var(--radius); padding: 20px 18px; position: relative; }
 .loop li:not(:last-child)::after { content: "\2192"; position: absolute; right: -14px; top: 50%; transform: translate(50%, -50%); color: var(--gold); font-family: var(--mono); font-weight: 700; z-index: 1; }
 .loop .k { font: 700 11px/1 var(--mono); letter-spacing: .15em; color: var(--gold); text-transform: uppercase; }
@@ -174,8 +174,26 @@ details.more > summary::-webkit-details-marker { display: none; }
 details.more > summary::before { content: "> "; color: var(--gold); }
 details.more[open] > summary { display: none; }
 
+/* The problem */
+.prose { max-width: 68ch; }
+.prose p { font-size: 19px; color: var(--soft); margin: 0 0 16px; }
+.shape { margin-top: 32px; max-width: 76ch; background: var(--surface); border: 1px solid var(--hair); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 24px 26px; }
+.shape h3 { margin-bottom: 8px; }
+.shape p { margin: 0; color: var(--soft); }
+
+/* What's in the folder */
+.folder { margin: 0 0 12px; display: grid; gap: 0; max-width: 860px; }
+.folder div { display: grid; grid-template-columns: 260px 1fr; gap: 20px; padding: 14px 0; border-top: 1px solid var(--hair); }
+.folder div:first-child { border-top: 0; }
+.folder dt { font-weight: 600; }
+.folder dd { margin: 0; color: var(--soft); }
+.gallery-note { margin: 18px 0 0; font: 400 13px/1.5 var(--mono); color: var(--muted); }
+h3.sub { margin: 40px 0 16px; }
+
 /* Worked example */
-.example { margin-top: 28px; }
+.example { margin-top: 8px; background: var(--surface); border: 1px solid var(--hair); border-radius: var(--radius); padding: 22px 24px; }
+.ex-label { margin: 0 0 6px; font: 700 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.ex-intro { margin: 0 0 16px; color: var(--soft); }
 .example-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 6px; }
 .example ol { margin: 0; padding-left: 20px; color: var(--soft); }
 .example ol li { padding: 4px 0; }
@@ -246,8 +264,8 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
 @media (max-width: 920px) {
   .hero .wrap { grid-template-columns: 1fr; gap: 40px; padding-top: 48px; }
   .cards, .two-ideas, .example-grid, .split, .cheat, .why { grid-template-columns: 1fr; }
-  .loop { grid-template-columns: 1fr 1fr; }
-  .loop li:nth-child(2)::after { display: none; }
+  .loop { grid-template-columns: 1fr; }
+  .loop li::after { display: none; }
   .gallery.chat { grid-template-columns: repeat(2, 1fr); }
   .gallery.cabins { grid-template-columns: repeat(2, 1fr); }
   .tag-fields { grid-template-columns: 1fr; }
@@ -261,7 +279,7 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
   .loop li::after { display: none; }
   .gallery.cabins { grid-template-columns: repeat(2, 1fr); }
   .tier { grid-template-columns: 1fr; gap: 4px; }
-  .rows div { grid-template-columns: 1fr; gap: 4px; }
+  .rows div, .folder div { grid-template-columns: 1fr; gap: 4px; }
   .phone { width: 270px; height: 500px; }
   .planner { padding-left: 22px; }
   .planner::before { left: 5px; }
@@ -300,9 +318,9 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
     <div>
       <p class="eyebrow">Hands-on exercise</p>
       <h1>You're Dana.<br>Lock in the <em>lake weekend.</em></h1>
-      <p class="lead">Your friends have planned a cabin weekend in the group chat all week, and nothing is decided. You said you'd sort it by Friday. <strong>Claude is your partner. How you work with it is what you're practising:</strong> break the job into phases, and carry a small file between them instead of one long conversation.</p>
+      <p class="lead">Eight friends, one group chat, a week of messages, and nothing decided. You said you'd sort it by Friday. In this exercise you'll work it out with Claude Code, one phase at a time, carrying a small file between phases instead of one long conversation. <strong>That way of working is the point; the cabin is the excuse.</strong></p>
       <div class="cta-row">
-        <a class="btn gold" href="#plan">Plan your phases</a>
+        <a class="btn gold" href="#problem">Start here</a>
         <a class="btn" href="#idea">How it works</a>
       </div>
     </div>
@@ -342,23 +360,65 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
 
 <nav class="nav" aria-label="Sections">
   <div class="wrap">
-    <a href="#job">The job</a>
+    <a href="#problem">The problem</a>
+    <a href="#inputs">What you have</a>
+    <a href="#job">What you hand in</a>
     <a href="#idea">How it works</a>
     <a href="#plan">1 · Plan</a>
-    <a href="#inputs">Your inputs</a>
-    <a href="#work">2 · Work</a>
-    <a href="#cheat">Claude Code</a>
-    <a href="#finish">Finish</a>
+    <a href="#cheat">2 · Open Claude</a>
+    <a href="#work">3 · Work</a>
+    <a href="#finish">4 · Finish</a>
   </div>
 </nav>
 
 <main>
 
+<section class="block" id="problem">
+  <div class="wrap">
+    <p class="eyebrow">The problem</p>
+    <h2>Everything you need is in the chat. That's the problem.</h2>
+    <div class="prose">
+      <p>The facts are scattered across four days of messages: who's in, which dates work, how much people can spend, who's bringing a dog, what people want to do. Some of it is in photo captions and edited messages. Some of it might be a joke, and nobody in the chat is going to tell you which.</p>
+      <p>Robert found eleven cabins and sent the search. There's a visitor guide for the area. And the group wants two things from you: a plan everyone can say yes to, and one thing you'll all do together.</p>
+    </div>
+    <div class="shape">
+      <h3>Why a cabin weekend?</h3>
+      <p>Because it has the same shape as real work: a long thread with the requirements buried in it, a pile of documents to compare, decisions only a person can make, and news that arrives after you've started. You don't need to know anything about cabins. You do need to notice what matters, write it down, and carry it forward without dragging the whole thread along.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="inputs">
+  <div class="wrap">
+    <p class="eyebrow">What you have</p>
+    <h2>Your folder, and what's in it.</h2>
+    <p class="lead">Everything Dana has is in <code>inputs/</code>, as screenshots. Claude reads one when you mention it with <code>@</code>. You can open any of them yourself; you're Dana, so read whatever you like.</p>
+    <dl class="folder">
+      <div><dt><code>inputs/chat/</code></dt><dd>The group chat: four screenshots, Monday to Thursday. Noisy, like a real chat.</dd></div>
+      <div><dt><code>inputs/cabins/search.png</code></dt><dd>Robert's search results: eleven cabins at a glance.</dd></div>
+      <div><dt><code>inputs/cabins/listings/</code></dt><dd>One page per cabin, with the detail the search page doesn't show.</dd></div>
+      <div><dt><code>inputs/things_to_do.png</code></dt><dd>A visitor guide for the lake.</dd></div>
+      <div><dt>Your own files</dt><dd>They go at the top of this folder, next to <code>inputs/</code>. They're plain text: open them in VS Code, read them, fix them by hand if you like.</dd></div>
+      <div><dt><code>CLAUDE.md</code></dt><dd>Instructions for Claude in this folder. That's why Claude will ask about your phases and your decisions. It's part of the exercise, not Claude being difficult.</dd></div>
+    </dl>
+
+    <div class="group-label"><h3>The group chat</h3><span>4 screenshots, Mon to Thu</span></div>
+    <div class="gallery chat" id="g-chat"></div>
+
+    <div class="group-label"><h3>Robert's cabin search</h3><span>The search page, then each cabin's listing page</span></div>
+    <div class="gallery cabins" id="g-cabins"></div>
+
+    <div class="group-label"><h3>Things to do around the lake</h3><span>A visitor guide</span></div>
+    <div class="gallery one" id="g-guide"></div>
+    <p class="gallery-note">Click a picture to see it full size. Click its name to copy the <code>@</code> mention for Claude.</p>
+  </div>
+</section>
+
 <section class="block" id="job">
   <div class="wrap">
-    <p class="eyebrow">The job</p>
+    <p class="eyebrow">What you hand in</p>
     <h2>Two messages, ready to send.</h2>
-    <p class="lead">That's all you hand in. Everything else you make along the way is a stepping stone.</p>
+    <p class="lead">Everything else you make along the way is a stepping stone. These two are what you'll show in the debrief.</p>
     <div class="cards">
       <article class="card">
         <span class="pill">To the group chat</span>
@@ -386,23 +446,28 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
 
 <section class="block alt" id="idea">
   <div class="wrap">
-    <p class="eyebrow">What you're practising</p>
+    <p class="eyebrow">How you'll work</p>
     <h2>Pack light: carry a file, not the conversation.</h2>
-    <div class="two-ideas">
-      <div class="idea"><h3>Break the job into phases.</h3><p>Before you open Claude, decide the steps. Each phase takes something in and hands something on. The plan is yours, not Claude's.</p></div>
-      <div class="idea"><h3>Iterate, compile, export.</h3><p>Work each phase in its own conversation, compile what the next phase needs into a small file, and start the next phase fresh from that file.</p></div>
-    </div>
+    <p class="lead">This is the technique from the slides. Break the job into phases, then for each phase:</p>
     <ol class="loop">
-      <li><span class="k">Iterate</span><div class="v">Work the phase</div><p>One conversation. Ask, correct, decide.</p></li>
-      <li><span class="k">Compile</span><div class="v">Pack a file</div><p>Save only what the next phase needs, and your decisions.</p></li>
-      <li><span class="k">Export</span><div class="v">Start fresh</div><p>Type <code>/clear</code>. The conversation goes; your files stay.</p></li>
-      <li><span class="k">Export</span><div class="v">Unpack it</div><p>Mention the file with <code>@</code> and begin the next phase.</p></li>
+      <li><span class="k">Iterate</span><div class="v">Work the phase</div><p>One conversation with Claude. Ask, correct, decide.</p></li>
+      <li><span class="k">Compile</span><div class="v">Pack a file</div><p>Save only what the next phase needs, and the decisions you made.</p></li>
+      <li><span class="k">Export</span><div class="v">Start fresh</div><p>Type <code>/clear</code>, then mention your file with <code>@</code> to begin the next phase.</p></li>
     </ol>
     <p class="loop-foot"><b>&#8635;</b> Repeat for each phase. Your files are the only thread between them.</p>
     <div class="why">
       <div><b>Long threads rot.</b>Screenshots, dead ends and corrections pile up, and the model weighs all of it.</div>
       <div><b>Corrections don't stick.</b>The model can't tell your fixed answer in turn five from the wrong one in turn three.</div>
       <div><b>A file is a decision.</b>A small file holds what you decided, and nothing you didn't.</div>
+    </div>
+    <div class="panel" style="margin-top:36px">
+      <h3>Before you <code>/clear</code>, check your file</h3>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>It's saved, and you've read it.</span></label></li>
+        <li><label><input type="checkbox"><span>Every decision you made is in it, with the reason.</span></label></li>
+        <li><label><input type="checkbox"><span>Nothing the next phase needs lives only in this conversation.</span></label></li>
+        <li><label><input type="checkbox"><span>Nothing is in it that the next phase won't use.</span></label></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -411,16 +476,41 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
   <div class="wrap">
     <p class="eyebrow">Step 1 · Before you open Claude</p>
     <h2>Plan your phases.</h2>
-    <p class="lead">Give each phase a name, what it takes in, and what it packs for the next one (usually a file). Then copy your plan into the Teams chat. It doesn't have to be perfect; you'll see where it bends.</p>
+    <p class="lead">Look through <a href="#inputs">your inputs</a> first, so you know what you're working with. Then decide your phases. Each phase takes something in (screenshots, or a file you made earlier) and hands one small file on. The last phases hand on the messages.</p>
 
+    <div class="example">
+      <p class="ex-label">A plan for a different job, so you can see the shape</p>
+      <p class="ex-intro">Booking a team dinner for twelve from a long Slack thread and five restaurant menus.</p>
+      <div class="example-grid">
+        <ol>
+          <li><b>The thread</b>: Slack screenshots in, <code>people.md</code> out.</li>
+          <li><b>The menus</b>: <code>people.md</code> and the menus in, <code>shortlist.md</code> out.</li>
+          <li><b>The pick</b>: both files in, <code>plan.md</code> out.</li>
+          <li><b>The booking</b>: <code>plan.md</code> in, the message out.</li>
+        </ol>
+        <div class="term">
+          <div class="term-bar"><i></i><i></i><i></i><span>people.md</span></div>
+<pre><span class="g"># Team dinner: people</span>
+- Coming: 12. Ana confirmed last, Thursday.
+- Date: Thu Mar 12, 7 PM.
+- Budget: $60 a head, food only.
+- Needs: 2 vegetarian, 1 gluten-free,
+  step-free access (Raj).
+- <span class="p">Decided:</span> Kim's "let's just do karaoke"
+  was a joke. Not a requirement.</pre>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub">Your plan</h3>
     <div class="planner" id="planner" aria-live="polite"></div>
     <div class="planner-actions">
       <button class="btn" id="add" type="button">+ Add a phase</button>
       <button class="btn gold" id="copy-plan" type="button">Copy for Teams</button>
-      <span class="note-s">Saved in this browser only.</span>
+      <span class="note-s">Paste it in the Teams chat so your trainer can see it. You can change the plan as you go; that's normal. Saved in this browser only.</span>
     </div>
 
-    <div class="hints" style="margin-top:40px">
+    <div class="hints" style="margin-top:32px">
       <details class="hint">
         <summary><span>Stuck on your phases?</span><span class="when">Hints</span></summary>
         <div class="hint-body">
@@ -430,108 +520,15 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
           </details>
         </div>
       </details>
-      <details class="hint example">
-        <summary><span>See a worked example from a different task</span><span class="when">Team dinner</span></summary>
-        <div class="hint-body">
-          <p style="color:var(--soft);margin:0 0 16px">Booking a team dinner for twelve from a long Slack thread and five restaurant menus. Same shape, different job.</p>
-          <div class="example-grid">
-            <ol>
-              <li><b>The thread</b>: Slack screenshots in, <code>people.md</code> out.</li>
-              <li><b>The menus</b>: <code>people.md</code> and the menus in, <code>shortlist.md</code> out.</li>
-              <li><b>The pick</b>: both files in, <code>plan.md</code> out.</li>
-              <li><b>The booking</b>: <code>plan.md</code> in, the message out.</li>
-            </ol>
-            <div class="term">
-              <div class="term-bar"><i></i><i></i><i></i><span>people.md</span></div>
-<pre><span class="g"># Team dinner: people</span>
-- Coming: 12. Ana confirmed last, Thursday.
-- Date: Thu Mar 12, 7 PM.
-- Budget: $60 a head, food only.
-- Needs: 2 vegetarian, 1 gluten-free,
-  step-free access (Raj).
-- <span class="p">Decided:</span> Kim's "let's just do karaoke"
-  was a joke. Not a requirement.</pre>
-            </div>
-          </div>
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<section class="block alt" id="inputs">
-  <div class="wrap">
-    <p class="eyebrow">Everything is in inputs/</p>
-    <h2>Your inputs.</h2>
-    <p class="lead">Click a picture to see it full size; you're Dana, so read whatever you like. To give one to Claude, type <code>@</code> and part of its name, or click its name below to copy it.</p>
-
-    <div class="group-label"><h3>The group chat</h3><span>4 screenshots, Mon to Thu</span></div>
-    <div class="gallery chat" id="g-chat"></div>
-
-    <div class="group-label"><h3>Robert's cabin search</h3><span>The search page, then each cabin's listing page</span></div>
-    <div class="gallery cabins" id="g-cabins"></div>
-
-    <div class="group-label"><h3>Things to do around the lake</h3><span>A visitor guide</span></div>
-    <div class="gallery one" id="g-guide"></div>
-  </div>
-</section>
-
-<section class="block" id="work">
-  <div class="wrap">
-    <p class="eyebrow">Step 2 · One phase at a time</p>
-    <h2>Work through it.</h2>
-    <p class="lead">Tell Claude which phase you're in. Open a hint when you need one; each has a nudge first and a bigger hint behind it. None of them gives you the answer.</p>
-
-    <div class="hints">
-      <details class="hint"><summary><span>Reading the chat</span><span class="when">Getting started</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Ask Claude to transcribe the screenshots before you decide anything. Photos, captions, reactions and edited messages are all part of the chat.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Some messages could be serious or a joke. For each one that would change a number or a choice, you decide, and write the decision and your reason into your file.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>Packing a phase file</span><span class="when">End of every phase</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Before you save, tell Claude what the next phase will look up in the file, and ask it to check the draft against that.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Test it: could a friend who never saw the chat start the next phase from this file alone? Anything that lives only in the conversation is gone after <code>/clear</code>.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>Choosing a cabin</span><span class="when">The search and listings</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>The search page rules some cabins out on its own. Open only the listing pages you still need.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Listing pages have what the search page doesn't: fees, house rules and the calendar. Compare the total for your dates, not the nightly price.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>When news arrives</span><span class="when">Any time</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Save it into this folder. Update your file first, then rerun the phase it affects from the file, in a fresh session.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Go through your phases and ask what the news changes in each. Then ask who is allowed to know it, and write that rule into the file as well.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>Picking the activity</span><span class="when">After the cabin</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Check each option against everyone who's coming, not just the person who suggested it.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>The guide's details are in its prose: ages, dogs, distance and terrain. Read each entry against your file, and keep it near the cabin.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>Writing the two messages</span><span class="when">The last phases</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Write each message in its own fresh session, from your plan alone. If something is missing, fix the plan, not the message.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Read each draft as the person getting it. What could they work out from it?</span></div></details>
-      </div></details>
-    </div>
-
-    <div class="split">
-      <div class="panel">
-        <h3>Before you <code>/clear</code></h3>
-        <ul class="checklist">
-          <li><label><input type="checkbox"><span>The file is saved, and you've read it.</span></label></li>
-          <li><label><input type="checkbox"><span>Every decision you made is in it, with the reason.</span></label></li>
-          <li><label><input type="checkbox"><span>Nothing the next phase needs lives only in this conversation.</span></label></li>
-          <li><label><input type="checkbox"><span>Nothing is in it that the next phase won't use.</span></label></li>
-        </ul>
-      </div>
-      <div class="phone-note">
-        <div class="h">Dana's phone</div>
-        <h3>Keep your phone handy.</h3>
-        <p>News can arrive while you work. When it does, save it into this folder and decide what it changes before you carry on.</p>
-      </div>
     </div>
   </div>
 </section>
 
 <section class="block alt" id="cheat">
   <div class="wrap">
-    <p class="eyebrow">Claude Code, the parts you need</p>
-    <h2>Four moves.</h2>
+    <p class="eyebrow">Step 2 · Open Claude Code</p>
+    <h2>Four moves are all you need.</h2>
+    <p class="lead">Open Claude Code in this folder. It will ask for your phases first: paste the plan you copied. From then on, start each message with the phase you're in, so Claude stays on it.</p>
     <div class="cheat">
       <div class="term">
         <div class="term-bar"><i></i><i></i><i></i><span>Claude Code</span></div>
@@ -551,19 +548,60 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
       <div>
         <dl class="rows">
           <div><dt>Give Claude a file</dt><dd>Type <code>@</code> and part of its name, then pick it. Mention several at once.</dd></div>
-          <div><dt>Save a phase</dt><dd>Ask Claude to save it to a file. If it asks to create or edit the file, allow it.</dd></div>
-          <div><dt>Start fresh</dt><dd>Type <code>/clear</code>. In VS Code you can also start a new conversation.</dd></div>
+          <div><dt>Save a phase</dt><dd>Ask Claude to save it to a file. If it asks to create or edit the file, allow it. The file appears at the top of this folder.</dd></div>
+          <div><dt>Start fresh</dt><dd>Type <code>/clear</code>. Claude forgets the conversation; your files stay. In VS Code you can also start a new conversation.</dd></div>
           <div><dt>Check your file</dt><dd>Open it in the editor and read it. It's yours to fix by hand too.</dd></div>
         </dl>
-        <p class="later">You'll learn these properly later in the workshop. For now, use them as given.<br>This folder has its own instructions for Claude, so it may ask about your phases and decisions. That's part of the exercise.</p>
+        <p class="later">You'll learn these properly later in the workshop. For now, use them as given.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="block" id="finish">
+<section class="block" id="work">
   <div class="wrap">
-    <p class="eyebrow">Done when</p>
+    <p class="eyebrow">Step 3 · One phase at a time</p>
+    <h2>Work through it.</h2>
+    <p class="lead">Your phases will probably look something like the ones below. Open a hint when you're stuck in one: each has a nudge first and a bigger hint behind it. None of them gives you the answer.</p>
+
+    <div class="hints">
+      <details class="hint"><summary><span>Reading the chat</span><span class="when">Getting started</span></summary><div class="hint-body">
+        <div class="tier"><span class="lab">Nudge</span><span>Ask Claude to transcribe the screenshots before you decide anything. Everything on the screen counts, not just the typed lines.</span></div>
+        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Photos, captions, reactions and edited messages are all part of the chat. Some messages could be serious or a joke: for each one that would change a number or a choice, you decide, and write the decision and your reason into your file.</span></div></details>
+      </div></details>
+      <details class="hint"><summary><span>Packing a phase file</span><span class="when">End of every phase</span></summary><div class="hint-body">
+        <div class="tier"><span class="lab">Nudge</span><span>Before you save, tell Claude what the next phase will look up in the file, and ask it to check the draft against that.</span></div>
+        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Test it: could a friend who never saw the chat start the next phase from this file alone? Anything that lives only in the conversation is gone after <code>/clear</code>.</span></div></details>
+      </div></details>
+      <details class="hint"><summary><span>Choosing a cabin</span><span class="when">The search and listings</span></summary><div class="hint-body">
+        <div class="tier"><span class="lab">Nudge</span><span>The search page rules some cabins out on its own. Open only the listing pages you still need.</span></div>
+        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Listing pages have what the search page doesn't: fees, house rules and the calendar. Compare the total for your dates, not the nightly price.</span></div></details>
+      </div></details>
+      <details class="hint"><summary><span>When news arrives</span><span class="when">Any time</span></summary><div class="hint-body">
+        <div class="tier"><span class="lab">Nudge</span><span>Save it into this folder. Update your file first, then rerun the phase it affects from the file, in a fresh session.</span></div>
+        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Go through your phases and ask what the news changes in each. Then ask who is allowed to know it, and write that rule into the file as well.</span></div></details>
+      </div></details>
+      <details class="hint"><summary><span>Picking the activity</span><span class="when">After the cabin</span></summary><div class="hint-body">
+        <div class="tier"><span class="lab">Nudge</span><span>Check each option against everyone who's coming, not just the person who suggested it.</span></div>
+        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>The facts that rule an option in or out are inside each entry's text, not in its title. Read every entry against everyone in your file, and keep the activity near the cabin.</span></div></details>
+      </div></details>
+      <details class="hint"><summary><span>Writing the two messages</span><span class="when">The last phases</span></summary><div class="hint-body">
+        <div class="tier"><span class="lab">Nudge</span><span>Write each message in its own fresh session, from your plan alone. If something is missing, fix the plan, not the message.</span></div>
+        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Read each draft as the person getting it. What could they work out from it?</span></div></details>
+      </div></details>
+    </div>
+
+    <div class="phone-note" style="margin-top:28px">
+      <div class="h">Dana's phone</div>
+      <h3>Keep your phone handy.</h3>
+      <p>News can arrive while you work; it'll come through the Teams chat. When it does, save it into this folder and decide what it changes before you carry on.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="finish">
+  <div class="wrap">
+    <p class="eyebrow">Step 4 · Finish</p>
     <h2>Both messages pass their check.</h2>
     <div class="cards">
       <article class="card">
@@ -585,19 +623,13 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
         </ul>
       </article>
     </div>
-    <div class="split">
-      <div class="panel">
-        <h3>For the debrief, have ready</h3>
-        <ul class="checklist">
-          <li><label><input type="checkbox"><span>Your phases, as you planned them and as they turned out</span></label></li>
-          <li><label><input type="checkbox"><span>Your files</span></label></li>
-          <li><label><input type="checkbox"><span>One decision you wrote down, and why</span></label></li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3>Fallen behind?</h3>
-        <p style="margin:0;color:var(--soft)">Your trainer may point you to <code>catch_up/</code>: finished files for the first phases, so you can carry on from there. Use them only when told.</p>
-      </div>
+    <div class="panel" style="margin-top:24px">
+      <h3>For the debrief, have ready</h3>
+      <ul class="checklist">
+        <li><label><input type="checkbox"><span>Your phases, as you planned them and as they turned out</span></label></li>
+        <li><label><input type="checkbox"><span>Your files</span></label></li>
+        <li><label><input type="checkbox"><span>One decision you wrote down, and why</span></label></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -662,9 +694,9 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
       t.innerHTML = '<span class="knot" aria-hidden="true"></span><div class="tag-head"><span class="n">Phase ' + (i + 1) + '</span>' +
         (phases.length > 1 ? '<button type="button" data-rm="' + i + '" aria-label="Remove phase ' + (i + 1) + '">Remove</button>' : '') +
         '</div><div class="tag-fields">' +
-        field(i, "name", "Name", "Name it") +
-        field(i, "takes", "Takes in", "What it starts from") +
-        field(i, "packs", "Packs for the next", "What it hands on") + '</div>';
+        field(i, "name", "Name", "e.g. The thread") +
+        field(i, "takes", "Takes in", "e.g. the Slack screenshots") +
+        field(i, "packs", "Packs for the next", "e.g. people.md") + '</div>';
       planner.appendChild(t);
       ["name", "takes", "packs"].forEach(function (k) { t.querySelector('[data-k="' + k + '"]').value = p[k] || ""; });
     });
