@@ -188,7 +188,13 @@ details.more[open] > summary { display: none; }
 .folder dt { font-weight: 600; }
 .folder dd { margin: 0; color: var(--soft); }
 .gallery-note { margin: 18px 0 0; font: 400 13px/1.5 var(--mono); color: var(--muted); }
+.folder dd b { color: var(--cream); font-weight: 600; }
 h3.sub { margin: 40px 0 16px; }
+
+/* Ready-to-copy starter messages */
+.starters { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.term-bar .copy { margin-left: auto; }
+.term pre.msg { color: var(--cream); }
 
 /* Worked example */
 .example { margin-top: 8px; background: var(--surface); border: 1px solid var(--hair); border-radius: var(--radius); padding: 22px 24px; }
@@ -263,7 +269,7 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
 
 @media (max-width: 920px) {
   .hero .wrap { grid-template-columns: 1fr; gap: 40px; padding-top: 48px; }
-  .cards, .two-ideas, .example-grid, .split, .cheat, .why { grid-template-columns: 1fr; }
+  .cards, .two-ideas, .example-grid, .split, .cheat, .why, .starters { grid-template-columns: 1fr; }
   .loop { grid-template-columns: 1fr; }
   .loop li::after { display: none; }
   .gallery.chat { grid-template-columns: repeat(2, 1fr); }
@@ -442,6 +448,14 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
         </ul>
       </article>
     </div>
+
+    <h3 class="sub">When you're done, your folder holds</h3>
+    <dl class="folder">
+      <div><dt>Your phase files</dt><dd>One per boundary, named by you: for example a group file, a shortlist and a plan. Each is short, in plain text, and holds what the next phase needed plus the decisions you made and why. Nothing else.</dd></div>
+      <div><dt>The group message, as a file</dt><dd>For example <code>group_message.md</code>. The message itself, ready to paste into the chat as it is: the cabin, the dates, what each person owes and the one thing you'll all do together. <b>Check it</b> by reading it as a friend in the chat: could you say yes, and does anything in it surprise you?</dd></div>
+      <div><dt>The host message, as a file</dt><dd>For example <code>host_message.md</code>. Ready to send as it is: the dates, who's coming, whatever the house rules ask you to mention, and your questions. <b>Check it</b> by reading it as the host: could you say yes from this alone?</dd></div>
+    </dl>
+    <p class="gallery-note">Ask Claude to save each message to its own file, or paste it into a new file yourself. You'll open these files in the debrief, so keep them at the top of the folder next to <code>inputs/</code>. The full picture is in <a href="#finish">Step 4</a>.</p>
   </div>
 </section>
 
@@ -453,7 +467,7 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
     <ol class="loop">
       <li><span class="k">Iterate</span><div class="v">Work the phase</div><p>One conversation with Claude. Ask, correct, decide.</p></li>
       <li><span class="k">Compile</span><div class="v">Pack a file</div><p>Save only what the next phase needs, and the decisions you made.</p></li>
-      <li><span class="k">Export</span><div class="v">Start fresh</div><p>Type <code>/clear</code>, then mention your file with <code>@</code> to begin the next phase.</p></li>
+      <li><span class="k">Export</span><div class="v">Start fresh</div><p>Start a new conversation (in a terminal, type <code>/clear</code>), then mention your file with <code>@</code> to begin the next phase.</p></li>
     </ol>
     <p class="loop-foot"><b>&#8635;</b> Repeat for each phase. Your files are the only thread between them.</p>
     <div class="why">
@@ -462,7 +476,7 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
       <div><b>A file is a decision.</b>A small file holds what you decided, and nothing you didn't.</div>
     </div>
     <div class="panel" style="margin-top:36px">
-      <h3>Before you <code>/clear</code>, check your file</h3>
+      <h3>Before you start fresh, check your file</h3>
       <ul class="checklist">
         <li><label><input type="checkbox"><span>It's saved, and you've read it.</span></label></li>
         <li><label><input type="checkbox"><span>Every decision you made is in it, with the reason.</span></label></li>
@@ -540,7 +554,7 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
 <span class="c"># pack a phase</span>
 <span class="p">&gt;</span> Save that to group.md
 
-<span class="c"># start fresh</span>
+<span class="c"># start fresh: VS Code, new conversation; terminal, /clear</span>
 <span class="p">&gt;</span> <span class="g">/clear</span>
 
 <span class="c"># unpack it in the next phase</span>
@@ -550,10 +564,28 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
         <dl class="rows">
           <div><dt>Give Claude a file</dt><dd>Type <code>@</code> and part of its name, then pick it. Mention several at once.</dd></div>
           <div><dt>Save a phase</dt><dd>Ask Claude to save it to a file. If it asks to create or edit the file, allow it. The file appears at the top of this folder.</dd></div>
-          <div><dt>Start fresh</dt><dd>Type <code>/clear</code>. Claude forgets the conversation; your files stay. In VS Code you can also start a new conversation.</dd></div>
+          <div><dt>Start fresh</dt><dd>In the VS Code extension, start a new conversation: Command Palette, then <b>Claude Code: New Conversation</b>. In a terminal, type <code>/clear</code>. Either way Claude forgets the conversation; your files stay.</dd></div>
           <div><dt>Check your file</dt><dd>Open it in the editor and read it. It's yours to fix by hand too.</dd></div>
         </dl>
         <p class="later">You'll learn these properly later in the workshop. For now, use them as given.</p>
+      </div>
+    </div>
+
+    <h3 class="sub" id="starter">Stuck on the first message? Copy one of these.</h3>
+    <p class="ex-intro">The first one starts phase 1 the way the technique wants: your phases, the screenshots, and a faithful transcription before any decision. If you filled in the planner in Step 1, the copy carries your phases with it. The second is for your first fresh conversation. Edit either to match your plan; swap <code>group.md</code> for your file's name.</p>
+    <div class="starters">
+      <div class="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>Your first message</span><button class="copy" type="button" data-copy="starter-1">Copy</button></div>
+<pre class="msg" id="starter-1">Here are my phases:
+(your phases from Step 1)
+
+We're in phase 1: reading the group chat. Before we decide anything, transcribe these four screenshots faithfully, in order: @inputs/chat/chat_1.png @inputs/chat/chat_2.png @inputs/chat/chat_3.png @inputs/chat/chat_4.png
+
+Include everything on the screen, not just the typed lines: reactions, edited messages, and any photos or images with their captions. Don't summarize or decide yet. When you're done I'll read the transcript and we'll go through it together.</pre>
+      </div>
+      <div class="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>First message in a fresh conversation</span><button class="copy" type="button" data-copy="starter-2">Copy</button></div>
+<pre class="msg" id="starter-2">@group.md We're in phase 2 of my plan. Work from this file, not the chat screenshots. First, read it back to me in a few lines: what it says we decided, and anything this phase would need that isn't in it. Then wait for me.</pre>
       </div>
     </div>
   </div>
@@ -567,12 +599,12 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
 
     <div class="hints">
       <details class="hint"><summary><span>Reading the chat</span><span class="when">Getting started</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Ask Claude to transcribe the screenshots before you decide anything. Everything on the screen counts, not just the typed lines.</span></div>
+        <div class="tier"><span class="lab">Nudge</span><span>Ask Claude to transcribe the screenshots before you decide anything. Everything on the screen counts, not just the typed lines. Need the words? There's a ready first message in <a href="#starter">Step 2</a>.</span></div>
         <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Photos, captions, reactions and edited messages are all part of the chat. Some messages could be serious or a joke: for each one that would change a number or a choice, you decide, and write the decision and your reason into your file.</span></div></details>
       </div></details>
       <details class="hint"><summary><span>Packing a phase file</span><span class="when">End of every phase</span></summary><div class="hint-body">
         <div class="tier"><span class="lab">Nudge</span><span>Before you save, tell Claude what the next phase will look up in the file, and ask it to check the draft against that.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Test it: could a friend who never saw the chat start the next phase from this file alone? Anything that lives only in the conversation is gone after <code>/clear</code>.</span></div></details>
+        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Test it: could a friend who never saw the chat start the next phase from this file alone? Anything that lives only in the conversation is gone when you start fresh.</span></div></details>
       </div></details>
       <details class="hint"><summary><span>Choosing a cabin</span><span class="when">The search and listings</span></summary><div class="hint-body">
         <div class="tier"><span class="lab">Nudge</span><span>The search page rules some cabins out on its own. Open only the listing pages you still need.</span></div>
@@ -587,7 +619,7 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
         <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>The facts that rule an option in or out are inside each entry's text, not in its title. Read every entry against everyone in your file, and keep the activity near the cabin.</span></div></details>
       </div></details>
       <details class="hint"><summary><span>Writing the two messages</span><span class="when">The last phases</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Write each message in its own fresh session, from your plan alone. If something is missing, fix the plan, not the message.</span></div>
+        <div class="tier"><span class="lab">Nudge</span><span>Write each message in its own fresh session, from your plan alone. If something is missing, fix the plan, not the message. Save each message to its own file when it's ready.</span></div>
         <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Read each draft as the person getting it. What could they work out from it?</span></div></details>
       </div></details>
     </div>
@@ -603,11 +635,27 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
 <section class="block alt" id="finish">
   <div class="wrap">
     <p class="eyebrow">Step 4 · Finish</p>
-    <h2>Both messages pass their check.</h2>
+    <h2>Both messages are files, and both pass their check.</h2>
+    <p class="lead">You're done when the top of your folder looks something like this and the two message files pass the checks below. Your names and phases will differ; the shape is what matters.</p>
+    <div class="term" style="max-width:760px; margin-bottom:28px">
+      <div class="term-bar"><i></i><i></i><i></i><span>Your folder at the end</span></div>
+<pre><span class="c"># untouched</span>
+inputs/   CLAUDE.md   README.md   START_HERE.html
+
+<span class="c"># your phase files: one per boundary, short, decisions included</span>
+<span class="p">group.md</span>            <span class="c">who's in, when, budget, what you decided and why</span>
+<span class="p">shortlist.md</span>        <span class="c">the cabins still standing, and why the rest fell</span>
+<span class="p">plan.md</span>             <span class="c">the pick, the activity, what each message must and must not say</span>
+
+<span class="c"># the two messages, each ready to send as it is</span>
+<span class="g">group_message.md</span>    <span class="c">paste into the chat</span>
+<span class="g">host_message.md</span>     <span class="c">send to the host</span></pre>
+    </div>
     <div class="cards">
       <article class="card">
         <span class="pill">Group message</span>
         <ul class="checklist">
+          <li><label><input type="checkbox"><span>Saved as its own file, for example <code>group_message.md</code></span></label></li>
           <li><label><input type="checkbox"><span>Names the cabin and the dates</span></label></li>
           <li><label><input type="checkbox"><span>Says what each person owes</span></label></li>
           <li><label><input type="checkbox"><span>Gives the one thing you'll all do together</span></label></li>
@@ -617,6 +665,7 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
       <article class="card blue">
         <span class="pill">Host message</span>
         <ul class="checklist">
+          <li><label><input type="checkbox"><span>Saved as its own file, for example <code>host_message.md</code></span></label></li>
           <li><label><input type="checkbox"><span>The dates and who's coming</span></label></li>
           <li><label><input type="checkbox"><span>Everything the house rules ask about</span></label></li>
           <li><label><input type="checkbox"><span>Your questions for the host</span></label></li>
@@ -628,8 +677,9 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
       <h3>For the debrief, have ready</h3>
       <ul class="checklist">
         <li><label><input type="checkbox"><span>Your phases, as you planned them and as they turned out</span></label></li>
-        <li><label><input type="checkbox"><span>Your files</span></label></li>
+        <li><label><input type="checkbox"><span>Your phase files and the two message files, open in VS Code</span></label></li>
         <li><label><input type="checkbox"><span>One decision you wrote down, and why</span></label></li>
+        <li><label><input type="checkbox"><span>If a message only exists in a conversation, ask Claude to save it to a file first</span></label></li>
       </ul>
     </div>
   </div>
@@ -717,14 +767,33 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
     var inputs = planner.querySelectorAll('[data-k="name"]');
     inputs[inputs.length - 1].focus();
   });
-  document.getElementById("copy-plan").addEventListener("click", function () {
-    var lines = phases.filter(function (p) { return p.name || p.takes || p.packs; }).map(function (p, i) {
+  function planLines() {
+    return phases.filter(function (p) { return p.name || p.takes || p.packs; }).map(function (p, i) {
       return (i + 1) + ". " + (p.name || "(phase)") + (p.takes ? " - in: " + p.takes : "") + (p.packs ? " - out: " + p.packs : "");
     });
+  }
+  document.getElementById("copy-plan").addEventListener("click", function () {
+    var lines = planLines();
     if (!lines.length) { toast("Fill in a phase first"); return; }
     copy("My phases:\n" + lines.join("\n"), "Copied. Paste it in the Teams chat.");
   });
   render();
+
+  // Starter messages: copy the panel's text; the first one carries the planner's phases if any.
+  var PLAN_SLOT = "(your phases from Step 1)";
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-copy]") : null;
+    if (!b) return;
+    var src = document.getElementById(b.getAttribute("data-copy"));
+    if (!src) return;
+    var text = src.textContent, msg = "Copied. Paste it into Claude Code.";
+    if (text.indexOf(PLAN_SLOT) !== -1) {
+      var lines = planLines();
+      if (lines.length) { text = text.replace(PLAN_SLOT, lines.join("\n")); msg = "Copied, with your phases from Step 1."; }
+      else msg = "Copied. Add your phases where it says so.";
+    }
+    copy(text, msg);
+  });
 
   function copy(text, msg) {
     var done = function () { toast(msg); };
