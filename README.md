@@ -24,5 +24,6 @@ If Claude Code doesn't open, can't sign you in, or gives no answer, tell your tr
 |---|---|
 | `START_HERE.html` | The brief, the phase planner, hints and a Claude Code cheat sheet |
 | `inputs/` | The screenshots: the group chat, the cabin search and listings, the things-to-do guide |
+| `inputs/phone/` | Dana's phone: a message Claude will tell you about partway through. Leave it until then. |
 | `catch_up/` | Finished files for the first phases, only if your trainer points you there |
 | `CLAUDE.md` | Instructions Claude reads in this folder |
