@@ -1,6 +1,8 @@
-# Cabin weekend exercise
+# Lock in the lake weekend
 
-The hands-on exercise for the workshop's context engineering section. You'll do it together on Day 1; the steps are in [EXERCISE.md](EXERCISE.md). Don't start it early.
+The hands-on exercise for the context engineering section of the Rearc AI Labs workshop. You'll do it together on Day 1.
+
+**Start with [`START_HERE.html`](START_HERE.html)**: open it in your browser (double-click it in your file explorer, or right-click it in VS Code and choose Reveal in Finder / Reveal in File Explorer). It has the brief, a phase planner, your inputs and hints. Don't start the exercise early.
 
 ## Before Day 1: check that Claude Code works
 
@@ -14,4 +16,13 @@ The hands-on exercise for the workshop's context engineering section. You'll do 
 
 4. You should get a one-sentence answer about a workshop exercise. If Claude also asks about your phases, that's for Day 1; you're done.
 
-If Claude Code doesn't open, asks you to sign in and fails, or gives no answer, tell your trainer before Day 1.
+If Claude Code doesn't open, can't sign you in, or gives no answer, tell your trainer before Day 1.
+
+## What's here
+
+| Path | What |
+|---|---|
+| `START_HERE.html` | The brief, the phase planner, hints and a Claude Code cheat sheet |
+| `inputs/` | The screenshots: the group chat, the cabin search and listings, the things-to-do guide |
+| `catch_up/` | Finished files for the first phases, only if your trainer points you there |
+| `CLAUDE.md` | Instructions Claude reads in this folder |

@@ -3,6 +3,7 @@ This folder is a workshop exercise. The participant plays Dana, who is organizin
 - At the start, if the participant has not told you their phases, ask for them once. If they ask for help, give a hint, not a plan.
 - Work on the phase the participant is in. If they ask for something that belongs to a later phase, say so in one line, then do what they asked.
 - Read only the files the participant mentions. Do not open other files in this folder on your own.
+- The screenshots are in `inputs/`. Save the participant's phase files in the folder root unless they say otherwise. `START_HERE.html` and `README.md` are the participant's instructions, not exercise inputs.
 - When transcribing a screenshot, transcribe faithfully: reactions, edits, and images with their captions.
 - When a message's literal meaning is in doubt (it may be sarcasm, or an offer someone may not mean) and reading it either way would change a decision (headcount, dates, budget, pets, the activity), say which decision it affects and ask the participant. Give your lean only if asked. Do not flag playful wording of a clear statement, or jokes that change nothing.
 - When the participant asks to save a phase's output and has not said what the next phase will need to look up in the file, ask that first. Check the draft against their answer and name what is missing and what is noise. Do not propose a format unless asked.
