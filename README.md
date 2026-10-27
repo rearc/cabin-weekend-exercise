@@ -8,7 +8,7 @@ The hands-on exercise for the context engineering section of the Rearc AI Labs w
 
 1. Clone this repository and open its folder in VS Code.
 2. Open Claude Code. Either way works for the whole exercise:
-   - **In VS Code:** click the orange Claude Code icon at the top right of the editor.
+   - **In VS Code:** click the orange Claude Code icon at the top right of the editor. The chat button at the top right opens it too, but it may start you in Copilot: switch to Claude Code there.
    - **In a terminal (the CLI):** open a terminal in this folder. In VS Code, Terminal > New Terminal opens one there; from any other terminal, `cd` into the folder you cloned. Then type `claude` and press Enter.
 3. Type this and press Enter:
 
