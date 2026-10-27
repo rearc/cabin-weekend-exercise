@@ -16,7 +16,6 @@
   --surface-alt: #0F1C38;
   --terminal: #0A1120;
   --cream: #F8F6F2;
-  --cream-alt: #E1DDD5;
   --soft: #A3B5DE;
   --muted: #7C88AB;
   --muted-light: #6F7780;
@@ -29,274 +28,165 @@
   --display: "Hanken Grotesk", "General Sans", ui-sans-serif, system-ui, sans-serif;
   --mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --radius: 16px;
-  --wrap: 1080px;
+  --wrap: 960px;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-body {
-  margin: 0;
-  background: var(--navy);
-  color: var(--cream);
-  font-family: var(--display);
-  font-size: 17px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+body { margin: 0; background: var(--navy); color: var(--cream); font-family: var(--display); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 a { color: var(--t-key); }
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
-code, kbd, .mono { font-family: var(--mono); }
-code { font-size: .88em; background: var(--chip); border: 1px solid var(--hair); border-radius: 6px; padding: 1px 6px; color: var(--cream); }
-
-/* Eyebrow: Space Mono uppercase, soft, trailing gold caret */
-.eyebrow { font-family: var(--mono); font-weight: 700; font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--soft); margin: 0 0 14px; }
-.eyebrow::after { content: "_"; color: var(--gold); margin-left: 2px; animation: blink 1.1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-.rule { width: 36px; height: 3px; background: var(--gold); border: 0; margin: 0 0 18px; }
-h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; margin: 0; }
-h2 { font-size: clamp(30px, 4.2vw, 42px); margin-bottom: 14px; }
-h3 { font-size: 21px; letter-spacing: -0.015em; }
-.lead { font-size: 19px; color: var(--soft); max-width: 62ch; margin: 0 0 28px; }
-.lead strong, p strong { color: var(--cream); }
+code { font-family: var(--mono); font-size: .86em; background: var(--chip); border: 1px solid var(--hair); border-radius: 6px; padding: 1px 6px; color: var(--cream); }
+.eyebrow { font: 600 15px/1.4 var(--display); letter-spacing: .04em; text-transform: uppercase; color: var(--soft); margin: 0 0 10px; }
+.eyebrow::after { content: "_"; color: var(--gold); margin-left: 2px; }
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; margin: 0; }
+h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 14px; }
+h3 { font-size: 19px; letter-spacing: -0.015em; margin-bottom: 8px; }
+p { margin: 0 0 14px; }
+.soft { color: var(--soft); }
 
 /* Top bar */
 .topbar { border-bottom: 1px solid var(--hair); background: var(--ink); }
-.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
-.lockup { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
-.lockup .word { font-weight: 600; font-size: 24px; letter-spacing: -0.02em; line-height: 1; }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+.lockup { display: inline-flex; align-items: center; gap: 14px; }
+.lockup .word { font-weight: 600; font-size: 22px; letter-spacing: -0.02em; line-height: 1; }
 .lockup .word span { color: var(--gold); }
-.lockup .div { width: 1px; height: 24px; background: var(--cream); opacity: .2; }
-.topbar .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.lockup .div { width: 1px; height: 22px; background: var(--cream); opacity: .2; }
+.topbar .tag { font-size: 14px; color: var(--soft); }
 
-/* Hero */
-.hero { position: relative; overflow: hidden; background: var(--ink); border-bottom: 1px solid var(--hair); }
-.hero::before { /* 64px hairline grid, edge-masked, with a blue bloom */
-  content: ""; position: absolute; inset: 0;
-  background-image: linear-gradient(var(--hair) 1px, transparent 1px), linear-gradient(90deg, var(--hair) 1px, transparent 1px);
-  background-size: 64px 64px; opacity: .45;
-  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 30% 40%, #000 30%, transparent 75%);
-          mask-image: radial-gradient(ellipse 70% 80% at 30% 40%, #000 30%, transparent 75%);
-}
-.hero::after { content: ""; position: absolute; width: 760px; height: 760px; left: -180px; top: -320px; background: radial-gradient(circle, rgba(47,93,199,.38), transparent 62%); pointer-events: none; }
-.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; padding-top: 72px; padding-bottom: 80px; }
-.hero h1 { font-size: clamp(42px, 6.4vw, 76px); margin-bottom: 22px; }
+/* Opening: everything you need to know on one screen */
+.hero { background: var(--ink); border-bottom: 1px solid var(--hair); padding: 48px 0 52px; }
+.hero h1 { font-size: clamp(36px, 5.4vw, 56px); margin-bottom: 16px; }
 .hero h1 em { font-style: normal; color: var(--gold); }
-.hero .lead { margin-bottom: 30px; }
-.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; font: 700 13px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 14px 18px; border-radius: 10px; border: 1px solid var(--hair); background: var(--chip); color: var(--cream); text-decoration: none; cursor: pointer; }
-.btn:hover { border-color: var(--soft); }
-.btn.gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-.btn.gold:hover { filter: brightness(1.06); }
-
-/* The phone: a lock screen with the group chat arriving */
-.phone { justify-self: center; width: 300px; height: 560px; border-radius: 44px; padding: 12px; background: #0b1224; border: 1px solid #2c3a5e; box-shadow: 0 40px 80px rgba(0,0,0,.5), inset 0 0 0 2px #050a17; position: relative; }
-.screen { position: relative; height: 100%; border-radius: 34px; overflow: hidden; background: var(--navy); }
-.screen svg.wall { position: absolute; inset: 0; width: 100%; height: 100%; }
-.clock { position: relative; text-align: center; padding-top: 38px; }
-.clock .d { font-size: 13px; font-weight: 500; color: var(--soft); }
-.clock .t { font-size: 64px; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
-.notes { position: absolute; left: 10px; right: 10px; bottom: 26px; display: grid; gap: 8px; }
-.note { background: rgba(25,41,74,.78); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(163,181,222,.18); border-radius: 16px; padding: 10px 12px; font-size: 13px; line-height: 1.35; opacity: 0; transform: translateY(14px); animation: arrive .5s cubic-bezier(.2,.8,.2,1) forwards; }
-.note:nth-child(1) { animation-delay: .5s; } .note:nth-child(2) { animation-delay: 1.3s; } .note:nth-child(3) { animation-delay: 2.1s; }
-.note .h { display: flex; justify-content: space-between; font-size: 11px; color: var(--soft); margin-bottom: 2px; }
-.note .h b { color: var(--cream); font-weight: 600; }
-@keyframes arrive { to { opacity: 1; transform: none; } }
+.hero .lead { font-size: 19px; color: var(--soft); max-width: 64ch; margin-bottom: 28px; }
+.hero .lead strong { color: var(--cream); }
+.label { font: 600 18px/1.3 var(--display); color: var(--gold); margin: 0 0 12px; }
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.card { background: var(--surface); border: 1px solid var(--hair); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 18px 20px; }
+.card.blue { border-left-color: var(--blue); }
+.card h3 code { font-size: .8em; }
+.card p { color: var(--soft); margin: 0; font-size: 16px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.steps a { display: block; height: 100%; background: var(--terminal); border: 1px solid var(--hair); border-radius: 12px; padding: 14px 16px; color: var(--cream); text-decoration: none; }
+.steps a:hover { border-color: var(--soft); }
+.steps .k { display: block; font: 700 11px/1 var(--mono); letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.steps .v { font-size: 16px; line-height: 1.4; }
+.steps-foot { margin: 12px 0 0; font: 13px/1.5 var(--mono); color: var(--muted); }
 
 /* Section nav */
-.nav { position: sticky; top: 0; z-index: 20; background: rgba(8,18,41,.92); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--hair); }
-.nav .wrap { display: flex; gap: 2px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: none; }
-.nav a { flex: none; font: 700 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-decoration: none; padding: 9px 9px; border-radius: 999px; border: 1px solid transparent; }
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(8,18,41,.94); border-bottom: 1px solid var(--hair); }
+.nav .wrap { display: flex; gap: 2px; overflow-x: auto; padding-top: 8px; padding-bottom: 8px; scrollbar-width: none; }
+.nav a { flex: none; font: 700 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); text-decoration: none; padding: 9px; border-radius: 999px; border: 1px solid transparent; }
 .nav a:hover { border-color: var(--hair); color: var(--cream); }
 
-section.block { padding: 88px 0; border-bottom: 1px solid var(--hair); }
+section.block { padding: 48px 0; border-bottom: 1px solid var(--hair); }
 section.block.alt { background: var(--surface-alt); }
 
-/* Cards with a coloured left accent bar */
-.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-.card { background: var(--surface); border: 1px solid var(--hair); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 26px 26px 22px; }
-.card.blue { border-left-color: var(--blue); }
-.card .pill { display: inline-block; font: 700 10.5px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; border: 1px solid currentColor; color: var(--gold); margin-bottom: 14px; }
-.card.blue .pill { color: var(--t-key); }
-.card h3 { margin-bottom: 12px; }
-.card ul { margin: 0; padding-left: 0; list-style: none; }
-.card li { padding: 7px 0 7px 26px; position: relative; border-top: 1px dashed var(--hair); }
-.card li:first-child { border-top: 0; }
-.card li::before { content: ">"; position: absolute; left: 2px; font-family: var(--mono); font-weight: 700; color: var(--gold); }
-.card.blue li::before { color: var(--t-key); }
-
-/* The loop: work, pack, clear, unpack */
-.two-ideas { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
-.idea { border-top: 1px solid var(--hair); padding-top: 18px; }
-.idea p { color: var(--soft); margin: 8px 0 0; }
-.loop { margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; counter-reset: step; position: relative; }
-.loop li { list-style: none; background: var(--terminal); border: 1px solid var(--hair); border-radius: var(--radius); padding: 20px 18px; position: relative; }
-.loop li:not(:last-child)::after { content: "\2192"; position: absolute; right: -14px; top: 50%; transform: translate(50%, -50%); color: var(--gold); font-family: var(--mono); font-weight: 700; z-index: 1; }
-.loop .k { font: 700 11px/1 var(--mono); letter-spacing: .15em; color: var(--gold); text-transform: uppercase; }
-.loop .v { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin: 10px 0 6px; }
-.loop p { margin: 0; color: var(--soft); font-size: 15px; line-height: 1.5; }
-.loop-foot { margin-top: 16px; font: 400 13px/1.5 var(--mono); color: var(--muted); }
-.loop-foot b { color: var(--gold); }
-.why { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.why div { color: var(--soft); font-size: 16px; border-left: 2px solid var(--hair); padding-left: 16px; }
-.why b { display: block; color: var(--cream); font-weight: 600; margin-bottom: 4px; }
-
-/* The phase planner: luggage tags on a line */
-.planner { position: relative; padding-left: 34px; }
-.planner::before { content: ""; position: absolute; left: 11px; top: 8px; bottom: 60px; border-left: 2px dashed var(--muted); opacity: .6; }
-.tag-card { position: relative; background: var(--cream); color: var(--navy); border-radius: 12px 12px 12px 12px; padding: 18px 20px 18px 54px; margin-bottom: 16px; clip-path: polygon(22px 0, 100% 0, 100% 100%, 22px 100%, 0 calc(100% - 22px), 0 22px); box-shadow: 0 1px 0 var(--cream-alt); }
-.tag-card::before { content: ""; position: absolute; left: 14px; top: 50%; width: 14px; height: 14px; margin-top: -7px; border-radius: 50%; background: var(--navy); box-shadow: 0 0 0 3px var(--gold); }
-.tag-card .knot { position: absolute; left: -34px; top: 50%; width: 34px; border-top: 2px dashed var(--muted); opacity: .6; }
-.tag-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-.tag-head .n { font: 700 11px/1 var(--mono); letter-spacing: .15em; text-transform: uppercase; color: var(--muted-light); }
-.tag-head button { background: none; border: 0; color: var(--muted-light); font: 700 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; padding: 4px; }
-.tag-head button:hover { color: var(--navy); }
-.tag-fields { display: grid; grid-template-columns: 1fr 1.3fr 1.3fr; gap: 12px; }
-.tag-fields label { display: block; font: 700 10px/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted-light); }
-.tag-fields input { width: 100%; margin-top: 6px; font: 500 15px/1.35 var(--display); color: var(--navy); background: #fff; border: 1px solid var(--cream-alt); border-radius: 8px; padding: 9px 10px; }
-.tag-fields input:focus { outline: 2px solid var(--blue); outline-offset: 0; }
-.planner-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 8px; }
-.planner-actions .note-s { font-size: 14px; color: var(--muted); }
-
-/* Hints: open one at a time */
-.hints { display: grid; gap: 12px; }
-details.hint { background: var(--surface); border: 1px solid var(--hair); border-radius: var(--radius); }
-details.hint > summary { list-style: none; cursor: pointer; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-weight: 600; font-size: 18px; }
-details.hint > summary::-webkit-details-marker { display: none; }
-details.hint > summary .when { margin-left: auto; font: 400 13px/1.3 var(--mono); color: var(--muted); text-align: right; }
-details.hint > summary::after { content: "+"; font: 700 20px/1 var(--mono); color: var(--gold); flex: none; }
-details.hint[open] > summary::after { content: "\2212"; }
-.hint-body { padding: 0 22px 20px; }
-.tier { display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 12px 0; border-top: 1px dashed var(--hair); color: var(--soft); }
-.tier .lab { font: 700 11px/1.6 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
-details.more > summary { cursor: pointer; font: 700 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--t-key); padding: 12px 0 4px; border-top: 1px dashed var(--hair); list-style: none; }
-details.more > summary::-webkit-details-marker { display: none; }
-details.more > summary::before { content: "> "; color: var(--gold); }
-details.more[open] > summary { display: none; }
-
-/* The problem */
-.prose { max-width: 68ch; }
-.prose p { font-size: 19px; color: var(--soft); margin: 0 0 16px; }
-.shape { margin-top: 32px; max-width: 76ch; background: var(--surface); border: 1px solid var(--hair); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 24px 26px; }
-.shape h3 { margin-bottom: 8px; }
-.shape p { margin: 0; color: var(--soft); }
-
-/* What's in the folder */
-.folder { margin: 0 0 12px; display: grid; gap: 0; max-width: 860px; }
-.folder div { display: grid; grid-template-columns: 260px 1fr; gap: 20px; padding: 14px 0; border-top: 1px solid var(--hair); }
-.folder div:first-child { border-top: 0; }
-.folder dt { font-weight: 600; }
-.folder dd { margin: 0; color: var(--soft); }
-.gallery-note { margin: 18px 0 0; font: 400 13px/1.5 var(--mono); color: var(--muted); }
-.folder dd b { color: var(--cream); font-weight: 600; }
-h3.sub { margin: 40px 0 16px; }
-
-/* Ready-to-copy starter messages */
-.starters { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.term-bar .copy { margin-left: auto; }
-.term pre.msg { color: var(--cream); }
-
-/* Worked example */
-.example { margin-top: 8px; background: var(--surface); border: 1px solid var(--hair); border-radius: var(--radius); padding: 22px 24px; }
-.ex-label { margin: 0 0 6px; font: 700 11px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
-.ex-intro { margin: 0 0 16px; color: var(--soft); }
-.example-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 6px; }
-.example ol { margin: 0; padding-left: 20px; color: var(--soft); }
-.example ol li { padding: 4px 0; }
-.example ol b { color: var(--cream); font-weight: 600; }
-
-/* Terminal panel */
-.term { background: var(--terminal); border: 1px solid var(--hair); border-radius: var(--radius); overflow: hidden; }
-.term-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--hair); }
-.term-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--hair); }
-.term-bar span { margin-left: 10px; font: 700 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.term pre { margin: 0; padding: 18px 20px; font: 400 14px/1.75 var(--mono); color: #C7D0E8; white-space: pre-wrap; word-break: break-word; }
-.term .c { color: var(--t-comment); }
-.term .p { color: var(--t-key); }
-.term .g { color: var(--gold); }
-
-/* Inputs gallery */
-.group-label { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin: 36px 0 14px; }
-.group-label:first-of-type { margin-top: 8px; }
-.group-label h3 { font-size: 20px; }
-.group-label span { font: 400 13px/1.4 var(--mono); color: var(--muted); }
-.gallery { display: grid; gap: 14px; }
-.gallery.chat { grid-template-columns: repeat(4, 1fr); }
-.gallery.cabins { grid-template-columns: repeat(4, 1fr); }
-.gallery.one { grid-template-columns: minmax(0, 380px); }
-.shot { background: var(--surface); border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
-.shot a.img { display: block; aspect-ratio: 3 / 4; overflow: hidden; background: var(--terminal); }
-.gallery.cabins .shot a.img, .gallery.one .shot a.img { aspect-ratio: 4 / 3; }
-.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .3s ease; }
-.shot a.img:hover img { transform: scale(1.03); }
-.shot .cap { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; }
-.shot .cap b { font-weight: 600; font-size: 14px; line-height: 1.3; }
-.copy { align-self: flex-start; font: 400 12px/1 var(--mono); color: var(--t-key); background: var(--chip); border: 1px solid var(--hair); border-radius: 6px; padding: 6px 8px; cursor: pointer; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.copy:hover { border-color: var(--t-key); }
-
-/* Checklists */
-.checklist { list-style: none; margin: 0; padding: 0; }
-.checklist li { margin: 0; border-top: 1px dashed var(--hair); }
-.checklist li:first-child { border-top: 0; }
-.checklist label { display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; cursor: pointer; }
-.checklist input { appearance: none; -webkit-appearance: none; flex: none; width: 20px; height: 20px; margin-top: 3px; border: 2px solid var(--muted); border-radius: 5px; display: grid; place-content: center; cursor: pointer; }
-.checklist input:checked { background: var(--gold); border-color: var(--gold); }
-.checklist input:checked::after { content: ""; width: 9px; height: 5px; border: solid var(--navy); border-width: 0 0 2.5px 2.5px; transform: rotate(-45deg) translate(1px, -1px); }
-.checklist input:checked + span { color: var(--muted); text-decoration: line-through; }
-.split { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: start; margin-top: 28px; }
-.panel { background: var(--surface); border: 1px solid var(--hair); border-radius: var(--radius); padding: 24px; }
-.panel h3 { margin-bottom: 10px; }
-.phone-note { background: var(--cream); color: var(--navy); border-radius: var(--radius); padding: 22px 24px; }
-.phone-note .h { font: 700 11px/1 var(--mono); letter-spacing: .15em; text-transform: uppercase; color: var(--muted-light); margin-bottom: 10px; display: flex; gap: 8px; align-items: center; }
-.phone-note .h::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(242,199,41,.3); }
-.phone-note h3 { margin-bottom: 8px; }
-.phone-note p { margin: 0; color: #3b4660; font-size: 16px; }
-.phone-note a { color: var(--navy); font-weight: 700; }
-
-.cheat { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: start; }
-.rows { display: grid; gap: 0; }
-.rows div { display: grid; grid-template-columns: 1fr 1.25fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--hair); }
-.rows div:first-child { border-top: 0; padding-top: 0; }
+/* Folder and moves: two-column rows */
+.rows { margin: 0; }
+.rows div { display: grid; grid-template-columns: 240px 1fr; gap: 20px; padding: 12px 0; border-top: 1px solid var(--hair); }
+.rows div:first-child { border-top: 0; }
 .rows dt { font-weight: 600; }
 .rows dd { margin: 0; color: var(--soft); }
-.later { margin-top: 18px; font: 400 13px/1.5 var(--mono); color: var(--muted); }
+.rows dd b { color: var(--cream); font-weight: 600; }
 
-footer { padding: 36px 0 48px; }
-footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font: 700 11px/1.6 var(--mono); letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
-footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
+/* Lists */
+ul.ticks, ol.nums { margin: 0 0 14px; padding: 0; list-style: none; }
+ul.ticks li, ol.nums li { position: relative; padding: 6px 0 6px 28px; color: var(--soft); }
+ul.ticks li::before { content: ">"; position: absolute; left: 4px; font: 700 15px/1.6 var(--mono); color: var(--gold); }
+ol.nums { counter-reset: n; }
+ol.nums li { counter-increment: n; }
+ol.nums li::before { content: counter(n); position: absolute; left: 4px; font: 700 15px/1.6 var(--mono); color: var(--gold); }
+ul.ticks b, ol.nums b { color: var(--cream); font-weight: 600; }
 
-.toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; background: var(--gold); color: var(--navy); font: 700 13px/1 var(--mono); letter-spacing: .06em; padding: 14px 18px; border-radius: 10px; transition: .25s ease; pointer-events: none; z-index: 50; }
+/* Prompts to copy */
+.term { background: var(--terminal); border: 1px solid var(--hair); border-radius: var(--radius); overflow: hidden; margin: 6px 0 18px; }
+.term-bar { display: flex; align-items: center; gap: 7px; padding: 10px 14px; border-bottom: 1px solid var(--hair); }
+.term-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--hair); }
+.term-bar span { margin-left: 8px; font-size: 14px; color: var(--soft); }
+.term pre { margin: 0; padding: 16px 18px; font: 14px/1.7 var(--mono); color: var(--cream); white-space: pre-wrap; word-break: break-word; }
+.copy { margin-left: auto; font: 700 13px/1 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--navy); background: var(--gold); border: 0; border-radius: 6px; padding: 7px 10px; cursor: pointer; }
+
+/* The suggested plan, hidden until asked for */
+details.plan { background: var(--surface); border: 1px solid var(--hair); border-left: 4px solid var(--blue); border-radius: var(--radius); margin-top: 8px; }
+details.plan > summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-weight: 600; }
+details.plan > summary::-webkit-details-marker { display: none; }
+details.plan > summary::after { content: "+"; font: 700 20px/1 var(--mono); color: var(--gold); }
+details.plan[open] > summary::after { content: "\2212"; }
+.plan-body { padding: 0 20px 16px; }
+.plan-body ol.nums code { font-size: .82em; }
+.plan-body p { color: var(--soft); margin: 4px 0 0; }
+
+
+/* The plan: one card per phase, with the prompts to send */
+.phases { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: ph; }
+.phase { background: var(--surface); border: 1px solid var(--hair); border-left: 4px solid var(--gold); border-radius: var(--radius); padding: 18px 20px; counter-increment: ph; }
+.phase-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.phase-head::before { content: "Phase " counter(ph); font: 600 16px/1 var(--display); color: var(--gold); }
+.phase-head h3 { margin: 0; }
+.phase-head .out { margin-left: auto; font-size: 15px; color: var(--soft); }
+.say { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: start; padding: 8px 0; border-top: 1px dashed var(--hair); }
+.say .when { font: 600 15px/1.6 var(--display); color: var(--soft); }
+.say pre { margin: 0; font: 15px/1.6 var(--mono); color: var(--cream); white-space: pre-wrap; word-break: break-word; }
+.say .copy { margin: 0; }
+.phase .note { margin: 8px 0 0; font-size: 15px; color: var(--soft); }
+.loop-line { margin: 0 0 18px; font-size: 18px; color: var(--soft); }
+.loop-line b { color: var(--gold); }
+
+/* What a finished message looks like, as a blank form */
+.card pre.shape { margin: 12px 0 0; padding: 12px 14px; background: var(--terminal); border: 1px dashed var(--hair); border-radius: 10px; font: 14.5px/1.65 var(--mono); color: var(--cream); white-space: pre-wrap; }
+
+
+/* The news step, inside the plan, with its way back */
+.news { background: var(--cream); color: var(--navy); border-radius: var(--radius); padding: 18px 20px; margin-left: 28px; position: relative; }
+.news::before { content: ""; position: absolute; left: -20px; top: -14px; bottom: 50%; border-left: 2px dashed var(--gold); }
+.news-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.news-head .tag { font: 600 15px/1 var(--display); color: var(--blue); }
+.news-head h3 { margin: 0; color: var(--navy); }
+.news ol.nums { margin: 0; }
+.news ol.nums li { color: #3b4660; }
+.news .say { border-top-color: #D8D2C6; }
+.news .say .when { color: var(--muted-light); }
+.news .say pre { color: var(--navy); }
+.news code { background: #ECE8E0; border-color: #D8D2C6; color: var(--navy); }
+.news .back { margin: 12px 0 0; padding: 10px 14px; background: var(--navy); color: var(--cream); border-radius: 10px; font-size: 16px; }
+.news .back b { color: var(--gold); }
+.news .back .arrow { color: var(--gold); font-size: 20px; margin-right: 6px; }
+
+/* The back-and-forth between Start and Save */
+.then { display: grid; grid-template-columns: 56px 1fr; gap: 12px; align-items: start; margin: 6px 0; padding: 10px 12px; border-left: 3px solid var(--blue); background: rgba(47,93,199,.12); border-radius: 0 8px 8px 0; }
+.then .when { font: 600 15px/1.6 var(--display); color: var(--t-key); }
+.then p { margin: 0; color: var(--cream); font-size: 16px; }
+
+/* Dana's phone */
+.phone-note { background: var(--cream); color: var(--navy); border-radius: var(--radius); padding: 22px 24px; }
+.phone-note .h { font: 600 15px/1 var(--display); color: var(--muted-light); margin-bottom: 10px; }
+.phone-note h2 { font-size: 26px; margin-bottom: 10px; }
+.phone-note ol.nums li { color: #3b4660; }
+.phone-note ol.nums li::before { color: var(--blue); }
+.phone-note code { background: #ECE8E0; border-color: #D8D2C6; color: var(--navy); }
+.phone-note ol.nums { margin: 0; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+footer { padding: 28px 0 40px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 14px; color: var(--soft); }
+
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; background: var(--gold); color: var(--navy); font: 700 13px/1 var(--mono); padding: 14px 18px; border-radius: 10px; transition: .25s ease; pointer-events: none; z-index: 50; }
 .toast.on { opacity: 1; transform: translate(-50%, 0); }
 
-@media (max-width: 920px) {
-  .hero .wrap { grid-template-columns: 1fr; gap: 40px; padding-top: 48px; }
-  .cards, .two-ideas, .example-grid, .split, .cheat, .why, .starters { grid-template-columns: 1fr; }
-  .loop { grid-template-columns: 1fr; }
-  .loop li::after { display: none; }
-  .gallery.chat { grid-template-columns: repeat(2, 1fr); }
-  .gallery.cabins { grid-template-columns: repeat(2, 1fr); }
-  .tag-fields { grid-template-columns: 1fr; }
+@media (max-width: 820px) {
+  .say { grid-template-columns: 1fr; gap: 6px; }
+  .cards, .two { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .rows div { grid-template-columns: 1fr; gap: 4px; }
 }
-@media (max-width: 560px) {
+@media (max-width: 520px) {
   .wrap { padding: 0 16px; }
   body { font-size: 16px; }
-  section.block { padding: 64px 0; }
+  .steps { grid-template-columns: 1fr; }
   .topbar .tag { display: none; }
-  .loop { grid-template-columns: 1fr; }
-  .loop li::after { display: none; }
-  .gallery.cabins { grid-template-columns: repeat(2, 1fr); }
-  .tier { grid-template-columns: 1fr; gap: 4px; }
-  .rows div, .folder div { grid-template-columns: 1fr; gap: 4px; }
-  .phone { width: 270px; height: 500px; }
-  .planner { padding-left: 22px; }
-  .planner::before { left: 5px; }
-  .tag-card .knot { left: -22px; width: 22px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .note { animation: none; opacity: 1; transform: none; }
-  .eyebrow::after { animation: none; }
-  .shot img, .toast { transition: none; }
 }
 </style>
 </head>
@@ -307,7 +197,7 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
     <span class="lockup" role="img" aria-label="rearc AI LABS">
       <span class="word">re<span>arc</span></span>
       <span class="div" aria-hidden="true"></span>
-      <svg aria-hidden="true" width="92" height="32" viewBox="0 0 288 100" fill="none">
+      <svg aria-hidden="true" width="86" height="30" viewBox="0 0 288 100" fill="none">
         <rect x="8" y="8" width="84" height="84" rx="17" stroke="#F8F6F2" stroke-width="4.4" opacity=".9"/>
         <text x="49" y="52" text-anchor="middle" dominant-baseline="central" font-family="Space Mono, monospace" font-weight="700" font-size="44" letter-spacing="-2" fill="#F8F6F2">AI</text>
         <text x="146" y="52" text-anchor="middle" dominant-baseline="central" font-family="Space Mono, monospace" font-weight="700" font-size="66" fill="#F2C729">L</text>
@@ -322,387 +212,124 @@ footer .wrap span:last-child::after { content: "_"; color: var(--gold); }
 
 <section class="hero">
   <div class="wrap">
-    <div>
-      <p class="eyebrow">Hands-on exercise</p>
-      <h1>You're Dana.<br>Lock in the <em>lake weekend.</em></h1>
-      <p class="lead">You and seven friends are planning a lake weekend. Everyone has opinions about the cabin, and nobody is taking charge of booking one, so it falls to you: gather everyone's requirements, compare them to what's available, and settle on a cabin and one thing to do together. You'll work it out with Claude Code one phase at a time, carrying a small file from each phase to the next instead of one long conversation.</p>
-      <div class="cta-row">
-        <a class="btn gold" href="#problem">Start here</a>
-        <a class="btn" href="#idea">How it works</a>
-      </div>
+    <p class="eyebrow">Hands-on exercise</p>
+    <h1>Lock in the <em>lake weekend.</em></h1>
+    <p class="lead">You are Dana. You and your friends want a lake weekend and nobody is booking. The facts are spread across a four-day group chat. Some messages might be jokes; nobody says which. <strong>You decide, and you write the decision down.</strong></p>
+
+    <p class="label">At the end you should have two files, at the top of this folder</p>
+    <div class="cards">
+      <div class="card"><h3><code>group_message.md</code></h3><p>A message to the group chat: the cabin, the dates, what each person owes, the one thing you all do together.</p><pre class="shape">Lake weekend is set!
+Cabin: [name], [where]
+Dates: [day, date] to [day, date]
+Cost: [$ each], send it to me by [when]
+All of us: [the one activity], [when]</pre></div>
+      <div class="card blue"><h3><code>host_message.md</code></h3><p>A booking request to the cabin's host: the dates, who's coming, anything the host's note on the listing asks you to mention, your questions.</p><pre class="shape">Hi [host],
+We'd like to book [cabin] for [dates].
+We are [how many], [who's coming].
+[What your listing's note asks guests to mention.]
+Two questions: [question]? [question]?
+Thanks, Dana</pre></div>
     </div>
-    <div class="phone" aria-label="Dana's phone: three new messages in the group chat Lake weekend">
-      <div class="screen">
-        <svg class="wall" viewBox="0 0 276 536" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#081229"/><stop offset=".55" stop-color="#19294A"/><stop offset="1" stop-color="#2F5DC7"/>
-            </linearGradient>
-            <linearGradient id="lake" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#254AA1"/><stop offset="1" stop-color="#040A18"/>
-            </linearGradient>
-          </defs>
-          <rect width="276" height="536" fill="url(#sky)"/>
-          <circle cx="196" cy="236" r="26" fill="#F2C729" opacity=".9"/>
-          <path d="M0 268 L40 236 L78 254 L120 214 L166 250 L204 226 L240 248 L276 230 L276 300 L0 300Z" fill="#0F1C38"/>
-          <path d="M0 290 L30 272 L64 284 L100 262 L140 286 L186 270 L232 288 L276 276 L276 312 L0 312Z" fill="#081229"/>
-          <g fill="#040A18">
-            <path d="M18 312 l10 -40 l10 40z"/><path d="M34 312 l8 -30 l8 30z"/><path d="M226 312 l11 -46 l11 46z"/><path d="M246 312 l9 -34 l9 34z"/><path d="M262 312 l7 -26 l7 26z"/>
-          </g>
-          <rect y="312" width="276" height="224" fill="url(#lake)"/>
-          <g stroke="#F2C729" stroke-linecap="round" opacity=".55">
-            <path d="M178 330 h36" stroke-width="3"/><path d="M184 344 h24" stroke-width="2.5"/><path d="M188 358 h16" stroke-width="2"/><path d="M192 370 h8" stroke-width="2"/>
-          </g>
-        </svg>
-        <div class="clock"><div class="d">Thursday, May 6</div><div class="t">7:04</div></div>
-        <div class="notes">
-          <div class="note"><div class="h"><b>Lake weekend 🌲</b><span>Wed</span></div><b>Dana:</b> ok ok. I'll go through everything and lock something in by friday</div>
-          <div class="note"><div class="h"><b>Lake weekend 🌲</b><span>7:01 PM</span></div><b>Tasha:</b> send the cabin when you pick, I'll pay you back same day</div>
-          <div class="note"><div class="h"><b>Lake weekend 🌲</b><span>now</span></div><b>Robert:</b> and plan ONE thing we all do together</div>
-        </div>
-      </div>
-    </div>
+
+    <p class="label">How: one phase per conversation</p>
+    <p class="loop-line">Each phase: <b>start fresh</b> &rarr; give Claude your files &rarr; work it out &rarr; <b>save one small file</b> &rarr; read it. The plan is below.</p>
   </div>
 </section>
 
-<nav class="nav" aria-label="Sections">
-  <div class="wrap">
-    <a href="#problem">The problem</a>
-    <a href="#inputs">What you have</a>
-    <a href="#job">What you hand in</a>
-    <a href="#idea">How it works</a>
-    <a href="#cheat">1 · Open Claude Code</a>
-    <a href="#plan">2 · Plan and start</a>
-    <a href="#work">3 · Work</a>
-    <a href="#finish">4 · Finish</a>
-  </div>
-</nav>
 
 <main>
-
-<section class="block" id="problem">
+<section class="block" id="plan">
   <div class="wrap">
-    <p class="eyebrow">The problem</p>
-    <h2>Everything you need is in the chat. That's the problem.</h2>
-    <div class="prose">
-      <p>The facts are scattered across four days of messages: who's in, which dates work, how much people can spend, who's bringing a dog, what people want to do. Some of it is in photo captions and edited messages. Some of it might be a joke, and nobody in the chat is going to tell you which.</p>
-      <p>Robert found eleven cabins and sent the search. There's a visitor guide for the area. And the group wants two things from you: a plan everyone can say yes to, and one thing you'll all do together.</p>
-    </div>
-    <div class="shape">
-      <h3>Why a cabin weekend?</h3>
-      <p>Because it has the same shape as real work: a long thread with the requirements buried in it, a pile of documents to compare, decisions only a person can make, and news that arrives after you've started. You don't need to know anything about cabins. You do need to notice what matters, write it down, and carry it forward without dragging the whole thread along.</p>
-    </div>
-  </div>
-</section>
-
-<section class="block alt" id="inputs">
-  <div class="wrap">
-    <p class="eyebrow">What you have</p>
-    <h2>Your folder, and what's in it.</h2>
-    <p class="lead">Everything Dana has is in <code>inputs/</code>, as screenshots. Claude reads one when you mention it with <code>@</code>. You can open any of them yourself; you're Dana, so read whatever you like, except Dana's phone: leave that until Claude tells you a message has arrived.</p>
-    <dl class="folder">
-      <div><dt><code>inputs/chat/</code></dt><dd>The group chat: four screenshots, Monday to Thursday. Noisy, like a real chat.</dd></div>
-      <div><dt><code>inputs/cabins/search.png</code></dt><dd>Robert's search results: eleven cabins at a glance.</dd></div>
-      <div><dt><code>inputs/cabins/listings/</code></dt><dd>One page per cabin, with the detail the search page doesn't show.</dd></div>
-      <div><dt><code>inputs/things_to_do.png</code></dt><dd>A visitor guide for the lake.</dd></div>
-      <div><dt><code>inputs/phone/</code></dt><dd>Dana's phone. A message will reach her partway through; Claude will tell you when it arrives. Leave it until then.</dd></div>
-      <div><dt>Your own files</dt><dd>They go at the top of this folder, next to <code>inputs/</code>. They're plain text: open them in VS Code, read them, fix them by hand if you like.</dd></div>
-      <div><dt><code>CLAUDE.md</code></dt><dd>Instructions for Claude in this folder. That's why Claude may ask about your phases or a decision. The questions are part of the exercise, not Claude being difficult. If you don't want to answer one, say so and Claude will carry on.</dd></div>
-    </dl>
-
-    <div class="group-label"><h3>The group chat</h3><span>4 screenshots, Mon to Thu</span></div>
-    <div class="gallery chat" id="g-chat"></div>
-
-    <div class="group-label"><h3>Robert's cabin search</h3><span>The search page, then each cabin's listing page</span></div>
-    <div class="gallery cabins" id="g-cabins"></div>
-
-    <div class="group-label"><h3>Things to do around the lake</h3><span>A visitor guide</span></div>
-    <div class="gallery one" id="g-guide"></div>
-    <p class="gallery-note">Click a picture to see it full size. Click its name to copy the <code>@</code> mention for Claude.</p>
-  </div>
-</section>
-
-<section class="block" id="job">
-  <div class="wrap">
-    <p class="eyebrow">What you hand in</p>
-    <h2>Two messages, ready to send.</h2>
-    <p class="lead">Everything else you make along the way is a stepping stone. These two are what you'll show in the debrief.</p>
-    <div class="cards">
-      <article class="card">
-        <span class="pill">To the group chat</span>
-        <h3>The plan, so everyone can say yes.</h3>
-        <ul>
-          <li>The cabin</li>
-          <li>The dates</li>
-          <li>What each person owes</li>
-          <li>The one thing you'll all do together</li>
-        </ul>
-      </article>
-      <article class="card blue">
-        <span class="pill">To the cabin's host</span>
-        <h3>A booking request the host can say yes to.</h3>
-        <ul>
-          <li>The dates</li>
-          <li>Who's coming</li>
-          <li>Anything the host's note on the listing asks you to mention</li>
-          <li>The questions you need answered before you arrive</li>
-        </ul>
-      </article>
-    </div>
-
-    <h3 class="sub">When you're done, your folder holds</h3>
-    <dl class="folder">
-      <div><dt>Your phase files</dt><dd>One per boundary, named by you: for example a group file, a shortlist and a plan. Each is short, in plain text, and holds what the next phase needed plus the decisions you made and why. Nothing else.</dd></div>
-      <div><dt>The group message, as a file</dt><dd>For example <code>group_message.md</code>. The message itself, ready to paste into the chat as it is: the cabin, the dates, what each person owes and the one thing you'll all do together. <b>Check it</b> by reading it as a friend in the chat: could you say yes, and does anything in it surprise you?</dd></div>
-      <div><dt>The host message, as a file</dt><dd>For example <code>host_message.md</code>. Ready to send as it is: the dates, who's coming, whatever the host's note asks you to mention, and your questions. <b>Check it</b> by reading it as the host: could you say yes from this alone?</dd></div>
-    </dl>
-    <p class="gallery-note">Ask Claude to save each message to its own file, or paste it into a new file yourself. You'll open these files in the debrief, so keep them at the top of the folder next to <code>inputs/</code>. The full picture is in <a href="#finish">Step 4</a>.</p>
-  </div>
-</section>
-
-<section class="block alt" id="idea">
-  <div class="wrap">
-    <p class="eyebrow">How you'll work</p>
-    <h2>Pack light: carry a file, not the conversation.</h2>
-    <p class="lead">This is the technique from the slides. Break the job into phases, then for each phase:</p>
-    <ol class="loop">
-      <li><span class="k">Iterate</span><div class="v">Work the phase</div><p>One conversation with Claude. Ask, correct, decide.</p></li>
-      <li><span class="k">Compile</span><div class="v">Pack a file</div><p>Save only what the next phase needs, and the decisions you made.</p></li>
-      <li><span class="k">Export</span><div class="v">Start fresh</div><p>Start a new conversation (in a terminal, type <code>/clear</code>), then mention your file with <code>@</code> to begin the next phase.</p></li>
+    <p class="eyebrow">The plan</p>
+    <h2>Five phases. Each starts in a fresh conversation.</h2>
+    <p class="soft">A phase is a conversation, not two messages. Send the Start line, then go back and forth: answer Claude's questions, ask your own, correct it, decide. Only when the phase is settled, send the Save line and read the file. Change the plan if you have a better one.</p>
+    <ol class="phases">
+<li class="phase"><div class="phase-head"><h3>Read the chat</h3><span class="out">saves <code>group.md</code></span></div><div class="say"><span class="when">Start</span><pre>I'm planning a lake weekend with friends. Here's our group chat from the last four days: @inputs/chat/chat_1.png @inputs/chat/chat_2.png @inputs/chat/chat_3.png @inputs/chat/chat_4.png
+Type out everything that was said, in order, exactly as written. Include reactions, edited messages and photo captions. Just the transcript for now, no conclusions.</pre><button class="copy" type="button">Copy</button></div><div class="then"><span class="when">Then</span><p>Check the transcript against the screenshots. Then ask Claude which messages might be jokes and what each would change, and decide.</p></div><div class="say"><span class="when">Save</span><pre>Save group.md for me: who's in, the dates, the budget, and anything people want or can't do. Add every call I made along the way and why I made it.</pre><button class="copy" type="button">Copy</button></div><p class="note">Some messages might be jokes. When one would change a number or a choice, you decide, and it goes in the file with your reason.</p></li>
+<li class="phase"><div class="phase-head"><h3>Cut the cabins</h3><span class="out">saves <code>shortlist.md</code></span></div><div class="say"><span class="when">Start</span><pre>Here's what the group settled on: @group.md And here's the cabin search page: @inputs/cabins/search.png
+Which cabins can you rule out from this page alone? For the rest, tell me which listings you need me to open.</pre><button class="copy" type="button">Copy</button></div><div class="then"><span class="when">Then</span><p>Give Claude the listings it asks for (<code>@inputs/cabins/listings/...</code>). Question its reasons, ask about anything that looks off, and decide which cabins stay.</p></div><div class="say"><span class="when">Save</span><pre>Save shortlist.md: the cabins still in the running, with the total for our dates, and one line on why each of the others is out.</pre><button class="copy" type="button">Copy</button></div><p class="note">Partway through, Claude tells you Dana's phone has a new message. Stop there and do the step below.</p></li>
+<li class="news"><div class="news-head"><span class="tag">Dana's phone</span><h3>News arrives during Cut the cabins</h3></div>
+<ol class="nums">
+<li>When Claude tells you, open the message right there, in the same conversation:</li>
+</ol>
+<div class="say"><span class="when">Send</span><pre>Something just came in on my phone: @inputs/phone/new_message.png Note in group.md what this changes and why.</pre><button class="copy" type="button">Copy</button></div>
+<ol class="nums" style="counter-reset: n 1">
+<li>Decide who is allowed to know the news, and add that rule to <code>group.md</code>.</li>
+</ol>
+<p class="back"><span class="arrow" aria-hidden="true">&#8634;</span> Then carry on with <b>Cut the cabins</b> in the same conversation: "With that change, which cabins still work?"</p>
+</li>
+<li class="phase"><div class="phase-head"><h3>Pick the cabin and activity</h3><span class="out">saves <code>plan.md</code></span></div><div class="say"><span class="when">Start</span><pre>Here's the group and the shortlist: @group.md @shortlist.md
+Help me choose the cabin, and find one thing to do nearby that everyone can join. Here's the visitor guide: @inputs/things_to_do.png</pre><button class="copy" type="button">Copy</button></div><div class="then"><span class="when">Then</span><p>Talk the options through. Ask why, push back, and make the call yourself.</p></div><div class="say"><span class="when">Save</span><pre>Save plan.md: the cabin we picked, the activity, and what the message to the group and the message to the host each need to say.</pre><button class="copy" type="button">Copy</button></div></li>
+<li class="phase"><div class="phase-head"><h3>Write the group message</h3><span class="out">saves <code>group_message.md</code></span></div><div class="say"><span class="when">Start</span><pre>Here's the plan: @plan.md Write the message I'll send to the group chat and save it as group_message.md.</pre><button class="copy" type="button">Copy</button></div><div class="then"><span class="when">Then</span><p>Read the draft as a friend in the chat. Ask for changes until you'd send it.</p></div><p class="note">If something is missing, fix <code>plan.md</code>, not the message.</p></li>
+<li class="phase"><div class="phase-head"><h3>Write the host message</h3><span class="out">saves <code>host_message.md</code></span></div><div class="say"><span class="when">Start</span><pre>Here's the plan: @plan.md Write the booking request to the host and save it as host_message.md.</pre><button class="copy" type="button">Copy</button></div><div class="then"><span class="when">Then</span><p>Read the draft as the host. Ask for changes until you'd send it.</p></div></li>
     </ol>
-    <p class="loop-foot"><b>&#8635;</b> Repeat for each phase. Your files are the only thread between them.</p>
-    <div class="why">
-      <div><b>Long threads rot.</b>Screenshots, dead ends and corrections pile up, and the model weighs all of it.</div>
-      <div><b>Corrections don't stick.</b>The model can't tell your fixed answer in turn five from the wrong one in turn three.</div>
-      <div><b>A file is a decision.</b>A small file holds what you decided, and nothing you didn't.</div>
-    </div>
-    <div class="panel" style="margin-top:36px">
-      <h3>Before you start fresh, check your file</h3>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span>It's saved, and you've read it.</span></label></li>
-        <li><label><input type="checkbox"><span>Every decision you made is in it, with the reason.</span></label></li>
-        <li><label><input type="checkbox"><span>Nothing the next phase needs lives only in this conversation.</span></label></li>
-        <li><label><input type="checkbox"><span>Nothing is in it that the next phase won't use.</span></label></li>
-      </ul>
-    </div>
   </div>
 </section>
-
-<section class="block" id="cheat">
+<section class="block alt" id="moves">
   <div class="wrap">
-    <p class="eyebrow">Step 1 · Open Claude Code</p>
-    <h2>Four moves are all you need.</h2>
-    <p class="lead">Open Claude Code in this folder now and keep this page beside it, but don't start yet: Step 2 ends where you switch. These four moves are all the exercise uses. Start each message with the phase you're in, so Claude stays on it.</p>
-    <div class="cheat">
-      <div class="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>Claude Code</span></div>
-<pre><span class="c"># give Claude screenshots</span>
-<span class="p">&gt;</span> @inputs/chat/chat_1.png @inputs/chat/chat_2.png
-  We're in phase 1. Transcribe these.
-
-<span class="c"># pack a phase</span>
-<span class="p">&gt;</span> Save that to group.md
-
-<span class="c"># start fresh: VS Code, the new thread button; terminal, /clear</span>
-<span class="p">&gt;</span> <span class="g">/clear</span>
-
-<span class="c"># unpack it in the next phase</span>
-<span class="p">&gt;</span> @group.md Phase 2: ...</pre>
-      </div>
-      <div>
-        <dl class="rows">
-          <div><dt>Give Claude a file</dt><dd>Type <code>@</code> and part of its name, then pick it. Mention several at once.</dd></div>
-          <div><dt>Save a phase</dt><dd>Ask Claude to save it to a file. If it asks to create or edit the file, allow it. The file appears at the top of this folder.</dd></div>
-          <div><dt>Start fresh</dt><dd>In the VS Code extension, click the new thread button at the top right of the Claude Code panel. In a terminal, type <code>/clear</code>. Either way Claude forgets the conversation; your files stay.</dd></div>
-          <div><dt>Check your file</dt><dd>Open it in the editor and read it. It's yours to fix by hand too.</dd></div>
-        </dl>
-        <p class="later">You'll learn these properly later in the workshop. For now, use them as given.</p>
-      </div>
-    </div>
+    <p class="eyebrow">The four moves</p>
+    <dl class="rows">
+      <div><dt>Give Claude files</dt><dd>Type <code>@</code> and part of a name, pick it. Several at once is fine, screenshots too.</dd></div>
+      <div><dt>Save a phase</dt><dd>Ask Claude to save it to a file. Allow the write when asked.</dd></div>
+      <div><dt>Start fresh</dt><dd>VS Code extension: the new thread button, top right of the Claude Code panel. Terminal: <code>/clear</code>. Claude forgets the conversation; your files stay.</dd></div>
+      <div><dt>Check your file</dt><dd>Open it and read it. Fix it by hand if you like.</dd></div>
+    </dl>
   </div>
 </section>
 
-<section class="block alt" id="plan">
+
+<section class="block alt" id="check">
   <div class="wrap">
-    <p class="eyebrow">Step 2 · Plan and start</p>
-    <h2>Plan your phases, or plan as you go.</h2>
-    <p class="lead">Both work. If you'd rather start straight away, jump into Claude Code and work out each phase and its file as you go. If you'd like help shaping a plan first, use the outline below. Either way, look through <a href="#inputs">your inputs</a> first so you know what you're working with.</p>
-    <p class="lead">Each phase is one conversation. It takes something in (screenshots, or a file you made earlier) and saves one small file for the next phase to start from. The last two phases save the two messages. A rough plan is enough, and changing it as you go is normal.</p>
-
-    <div class="example">
-      <p class="ex-label">A plan for a different job, so you can see the shape</p>
-      <p class="ex-intro">Booking a team dinner for twelve from a long Slack thread and five restaurant menus.</p>
-      <div class="example-grid">
-        <ol>
-          <li><b>The thread</b>: Slack screenshots in, <code>people.md</code> out.</li>
-          <li><b>The menus</b>: <code>people.md</code> and the menus in, <code>shortlist.md</code> out.</li>
-          <li><b>The pick</b>: both files in, <code>plan.md</code> out.</li>
-          <li><b>The booking</b>: <code>plan.md</code> in, the message out.</li>
-        </ol>
-        <div class="term">
-          <div class="term-bar"><i></i><i></i><i></i><span>people.md</span></div>
-<pre><span class="g"># Team dinner: people</span>
-- Coming: 12. Ana confirmed last, Thursday.
-- Date: Thu Mar 12, 7 PM.
-- Budget: $60 a head, food only.
-- Needs: 2 vegetarian, 1 gluten-free,
-  step-free access (Raj).
-- <span class="p">Decided:</span> Kim's "let's just do karaoke"
-  was a joke. Not a requirement.</pre>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="sub">Your plan (optional)</h3>
-    <div class="planner" id="planner" aria-live="polite"></div>
-    <div class="planner-actions">
-      <button class="btn" id="add" type="button">+ Add a phase</button>
-      <button class="btn gold" id="copy-plan" type="button">Copy for Claude</button>
-      <span class="note-s">Copies your first message for Claude, with your phases in it (or, with none, that you're planning as you go). Paste it into Claude Code to start. Saved in this browser only.</span>
-    </div>
-
-    <div class="hints" style="margin-top:32px">
-      <details class="hint">
-        <summary><span>Stuck on your phases?</span><span class="when">Hints</span></summary>
-        <div class="hint-body">
-          <div class="tier"><span class="lab">Nudge</span><span>Start from the end. What does each message need, and which input gives you each piece?</span></div>
-          <details class="more"><summary>Bigger hint</summary>
-            <div class="tier"><span class="lab">Bigger hint</span><span>Put a boundary wherever you have to decide something, or where the next step needs far less than this one saw. Most plans land between four and six phases.</span></div>
-          </details>
-        </div>
-      </details>
-    </div>
-
-    <h3 class="sub" id="starter">Your first messages</h3>
-    <p class="ex-intro">The first one starts phase 1 the way the technique wants: your phases (or that you're planning as you go), the screenshots, and a faithful transcription before any decision. "Copy for Claude" copies the same message, with whatever you put in the planner. The second is for your first fresh conversation; swap <code>group.md</code> for your file's name. Edit either to match your plan.</p>
-    <div class="starters">
-      <div class="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>Your first message</span><button class="copy" type="button" data-copy="starter-1">Copy</button></div>
-<pre class="msg" id="starter-1">(your phases, or: I'm planning as I go)
-
-We're in phase 1: reading the group chat. Before we decide anything, transcribe these four screenshots faithfully, in order: @inputs/chat/chat_1.png @inputs/chat/chat_2.png @inputs/chat/chat_3.png @inputs/chat/chat_4.png
-
-Include everything on the screen, not just the typed lines: reactions, edited messages, and any photos or images with their captions. Don't summarize or decide yet. When you're done I'll read the transcript and we'll go through it together.</pre>
-      </div>
-      <div class="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>First message in a fresh conversation</span><button class="copy" type="button" data-copy="starter-2">Copy</button></div>
-<pre class="msg" id="starter-2">@group.md We're in phase 2 of my plan. Work from this file, not the chat screenshots. First, read it back to me in a few lines: what it says we decided, and anything this phase would need that isn't in it. Then wait for me.</pre>
-      </div>
-    </div>
-
-    <div class="panel" style="margin-top:36px">
-      <h3>Before you switch to Claude Code</h3>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span>You know the job: a group message and a host message, each saved as its own file.</span></label></li>
-        <li><label><input type="checkbox"><span>You have your phases, or you're planning as you go.</span></label></li>
-        <li><label><input type="checkbox"><span>Each phase ends with a small file, and the next phase starts in a fresh conversation from that file.</span></label></li>
-        <li><label><input type="checkbox"><span>You make the calls. Claude may ask whether a message is a joke or what you decided; if you'd rather skip a question, say so.</span></label></li>
-        <li><label><input type="checkbox"><span>You'll leave <code>inputs/phone/</code> alone until Claude tells you Dana has a new message.</span></label></li>
-      </ul>
-    </div>
-
-    <div class="phone-note" style="margin-top:28px">
-      <div class="h">Your turn</div>
-      <h3>Now switch to Claude Code and start.</h3>
-      <p>That's everything you need. From here the work happens in Claude Code: turn the chat, the cabins and the guide into the two messages, one phase at a time. The rest of this page is for while you work: <a href="#work">Step 3</a> has a hint for each phase when you're stuck, and <a href="#finish">Step 4</a> has the checks for when you think you're done. Stuck? Post in Teams.</p>
+    <p class="eyebrow">Before you finish, check both</p>
+    <div class="two">
+      <div class="card"><h3>Group message</h3><p>Read it as a friend in the chat. Could you say yes? Does anything surprise you that shouldn't?</p></div>
+      <div class="card blue"><h3>Host message</h3><p>Read it as the host. Could you say yes from this alone?</p></div>
     </div>
   </div>
 </section>
 
-<section class="block" id="work">
+<section class="block" id="stuck">
   <div class="wrap">
-    <p class="eyebrow">Step 3 · One phase at a time</p>
-    <h2>Work through it.</h2>
-    <p class="lead">Come back here while you work. Your phases will probably look something like the ones below. Open a hint when you're stuck in one: each has a nudge first and a bigger hint behind it. None of them gives you the answer. Still stuck? Post in Teams.</p>
-
-    <div class="hints">
-      <details class="hint"><summary><span>Reading the chat</span><span class="when">Getting started</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Ask Claude to transcribe the screenshots before you decide anything. Everything on the screen counts, not just the typed lines. Need the words? There's a ready first message in <a href="#starter">Step 2</a>.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Photos, captions, reactions and edited messages are all part of the chat. Some messages could be serious or a joke: for each one that would change a number or a choice, you decide, and write the decision and your reason into your file.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>Packing a phase file</span><span class="when">End of every phase</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>When you save, tell Claude what the next phase will look up in the file, and ask it to check the file against that. Not sure yet? Save it anyway, and check it when you start the next phase.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Test it: could a friend who never saw the chat start the next phase from this file alone? Anything that lives only in the conversation is gone when you start fresh.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>Choosing a cabin</span><span class="when">The search and listings</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>The search page rules some cabins out on its own. Open only the listing pages you still need.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Listing pages have what the search page doesn't: fees, house rules, a note from the host and the calendar. Compare the total for your dates, not the nightly price.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>When news arrives</span><span class="when">Any time</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Give Claude the message with <code>@</code>. Update your file first, then rerun the phase it affects from the file, in a fresh session.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Go through your phases and ask what the news changes in each. Then ask who is allowed to know it, and write that rule into the file as well.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>Picking the activity</span><span class="when">After the cabin</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Check each option against everyone who's coming, not just the person who suggested it.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>The facts that rule an option in or out are inside each entry's text, not in its title. Read every entry against everyone in your file, and keep the activity near the cabin.</span></div></details>
-      </div></details>
-      <details class="hint"><summary><span>Writing the two messages</span><span class="when">The last phases</span></summary><div class="hint-body">
-        <div class="tier"><span class="lab">Nudge</span><span>Write each message in its own fresh session, from your plan alone. If something is missing, fix the plan, not the message. Save each message to its own file when it's ready.</span></div>
-        <details class="more"><summary>Bigger hint</summary><div class="tier"><span class="lab">Bigger hint</span><span>Read each draft as the person getting it. What could they work out from it?</span></div></details>
-      </div></details>
-    </div>
-
-    <div class="phone-note" style="margin-top:28px">
-      <div class="h">Dana's phone</div>
-      <h3>A message is on its way.</h3>
-      <p>Partway through, Claude will tell you Dana has a new message in <code>inputs/phone/</code>. When it does, open it, decide what it changes, and record that in your file before you carry on.</p>
-    </div>
+    <p class="eyebrow">If you're stuck</p>
+    <ul class="ticks">
+      <li>Start from the end: what does each message need, and which input gives each piece?</li>
+      <li>Transcribe before deciding. Everything on screen counts.</li>
+      <li>The search page rules some cabins out on its own. Open only the listings you still need. Compare the total for your dates, not the nightly price.</li>
+      <li>Check each activity against everyone coming. The deciding facts are in the entry text, not the title. Keep it near the cabin.</li>
+      <li>Write each message in its own fresh conversation, from your plan alone. If something's missing, fix the plan, not the message.</li>
+      <li>Read each draft as its recipient.</li>
+      <li><b>Still stuck:</b> post in Teams.</li>
+    </ul>
   </div>
 </section>
 
-<section class="block alt" id="finish">
+<section class="block alt" id="folder">
   <div class="wrap">
-    <p class="eyebrow">Step 4 · Finish</p>
-    <h2>Both messages are files, and both pass their check.</h2>
-    <p class="lead">You're done when the top of your folder looks something like this and the two message files pass the checks below. Your names and phases will differ; the shape is what matters.</p>
-    <div class="term" style="max-width:760px; margin-bottom:28px">
-      <div class="term-bar"><i></i><i></i><i></i><span>Your folder at the end</span></div>
-<pre><span class="c"># untouched</span>
-inputs/   CLAUDE.md   README.md   START_HERE.html
-
-<span class="c"># your phase files: one per boundary, short, decisions included</span>
-<span class="p">group.md</span>            <span class="c">who's in, when, budget, what you decided and why</span>
-<span class="p">shortlist.md</span>        <span class="c">the cabins still standing, and why the rest fell</span>
-<span class="p">plan.md</span>             <span class="c">the pick, the activity, what each message must and must not say</span>
-
-<span class="c"># the two messages, each ready to send as it is</span>
-<span class="g">group_message.md</span>    <span class="c">paste into the chat</span>
-<span class="g">host_message.md</span>     <span class="c">send to the host</span></pre>
-    </div>
-    <div class="cards">
-      <article class="card">
-        <span class="pill">Group message</span>
-        <ul class="checklist">
-          <li><label><input type="checkbox"><span>Saved as its own file, for example <code>group_message.md</code></span></label></li>
-          <li><label><input type="checkbox"><span>Names the cabin and the dates</span></label></li>
-          <li><label><input type="checkbox"><span>Says what each person owes</span></label></li>
-          <li><label><input type="checkbox"><span>Gives the one thing you'll all do together</span></label></li>
-          <li><label><input type="checkbox"><span>Read as a friend in the chat: nothing in it surprises you that shouldn't</span></label></li>
-        </ul>
-      </article>
-      <article class="card blue">
-        <span class="pill">Host message</span>
-        <ul class="checklist">
-          <li><label><input type="checkbox"><span>Saved as its own file, for example <code>host_message.md</code></span></label></li>
-          <li><label><input type="checkbox"><span>The dates and who's coming</span></label></li>
-          <li><label><input type="checkbox"><span>Everything the host's note asks for</span></label></li>
-          <li><label><input type="checkbox"><span>Your questions for the host</span></label></li>
-          <li><label><input type="checkbox"><span>Read as the host: you could say yes from this alone</span></label></li>
-        </ul>
-      </article>
-    </div>
-    <div class="panel" style="margin-top:24px">
-      <h3>For the debrief, have ready</h3>
-      <ul class="checklist">
-        <li><label><input type="checkbox"><span>Your phases, as you planned them and as they turned out</span></label></li>
-        <li><label><input type="checkbox"><span>Your phase files and the two message files, open in VS Code</span></label></li>
-        <li><label><input type="checkbox"><span>One decision you wrote down, and why</span></label></li>
-        <li><label><input type="checkbox"><span>If a message only exists in a conversation, ask Claude to save it to a file first</span></label></li>
-      </ul>
-    </div>
+    <p class="eyebrow">What's in the folder</p>
+    <dl class="rows">
+      <div><dt><code>inputs/chat/</code></dt><dd>The group chat: <code>chat_1.png</code> to <code>chat_4.png</code>, Monday to Thursday.</dd></div>
+      <div><dt><code>inputs/cabins/search.png</code></dt><dd>A search page with eleven cabins.</dd></div>
+      <div><dt><code>inputs/cabins/listings/</code></dt><dd>One listing page per cabin, with detail the search page lacks.</dd></div>
+      <div><dt><code>inputs/things_to_do.png</code></dt><dd>The lake's visitor guide.</dd></div>
+      <div><dt><code>inputs/phone/</code></dt><dd>Dana's phone. A message arrives partway through; Claude will tell you when. <b>Don't open it before then.</b></dd></div>
+      <div><dt><code>catch_up/</code></dt><dd>Finished early-phase files. Only if the trainer sends you there.</dd></div>
+      <div><dt><code>CLAUDE.md</code></dt><dd>Instructions for Claude in this folder. Because of it, Claude may ask about your phases or about a decision (is this message a joke?). That's part of the exercise. You can decline any question.</dd></div>
+      <div><dt>Your own files</dt><dd>At the top of the folder, next to <code>inputs/</code>. Plain text: open them, edit them.</dd></div>
+    </dl>
   </div>
 </section>
 
+<section class="block" id="debrief">
+  <div class="wrap">
+    <p class="eyebrow">Debrief</p>
+    <p>Bring:</p>
+    <ul class="ticks">
+      <li>your phases, as planned and as they turned out;</li>
+      <li>your files, open;</li>
+      <li>one decision you wrote down, and why.</li>
+    </ul>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -713,108 +340,16 @@ inputs/   CLAUDE.md   README.md   START_HERE.html
 
 <script>
 (function () {
-  var CHAT = [
-    ["chat_1.png", "Monday"], ["chat_2.png", "Tuesday"], ["chat_3.png", "Wednesday"], ["chat_4.png", "Thursday"]
-  ];
-  var CABINS = ["birch_point", "pine_hollow", "lakeside_lodge", "ridgeview", "cedar_cove", "the_hideaway",
-                "maple_loft", "lakehouse_on_loon", "fern_cabin", "shoreline_retreat", "timber_ridge"];
-  var title = function (slug) { return slug.split("_").map(function (w) { return w === "on" ? w : w[0].toUpperCase() + w.slice(1); }).join(" "); };
-
-  function shot(path, label) {
-    var el = document.createElement("figure");
-    el.className = "shot";
-    el.style.margin = "0";
-    el.innerHTML = '<a class="img" target="_blank" rel="noopener"></a><figcaption class="cap"><b></b><button class="copy" type="button"></button></figcaption>';
-    var a = el.querySelector("a"), img = document.createElement("img");
-    a.href = path; a.setAttribute("aria-label", "Open " + label + " full size");
-    img.src = path; img.alt = label; img.loading = "lazy";
-    a.appendChild(img);
-    el.querySelector("b").textContent = label;
-    var b = el.querySelector(".copy");
-    b.textContent = "@" + path.split("/").pop();
-    b.title = "Copy @" + path;
-    b.addEventListener("click", function () { copy("@" + path, "Copied @" + path); });
-    return el;
-  }
-  var gc = document.getElementById("g-chat");
-  CHAT.forEach(function (c) { gc.appendChild(shot("inputs/chat/" + c[0], c[1])); });
-  var gb = document.getElementById("g-cabins");
-  gb.appendChild(shot("inputs/cabins/search.png", "The search page"));
-  CABINS.forEach(function (c) { gb.appendChild(shot("inputs/cabins/listings/listing_" + c + ".png", title(c))); });
-  document.getElementById("g-guide").appendChild(shot("inputs/things_to_do.png", "Things to do"));
-
-  // Phase planner: luggage tags. Remembered in this browser only.
-  var KEY = "cabin-weekend-phases-v1";
-  var phases;
-  try { phases = JSON.parse(localStorage.getItem(KEY)); } catch (e) { phases = null; }
-  if (!Array.isArray(phases) || !phases.length) phases = [{}, {}, {}];
-  var planner = document.getElementById("planner");
-
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(phases)); } catch (e) {} }
-  function field(i, key, label, ph) {
-    var id = "p" + i + key;
-    return '<div><label for="' + id + '">' + label + '</label><input id="' + id + '" data-i="' + i + '" data-k="' + key + '" placeholder="' + ph + '" autocomplete="off"></div>';
-  }
-  function render() {
-    planner.innerHTML = "";
-    phases.forEach(function (p, i) {
-      var t = document.createElement("div");
-      t.className = "tag-card";
-      t.innerHTML = '<span class="knot" aria-hidden="true"></span><div class="tag-head"><span class="n">Phase ' + (i + 1) + '</span>' +
-        (phases.length > 1 ? '<button type="button" data-rm="' + i + '" aria-label="Remove phase ' + (i + 1) + '">Remove</button>' : '') +
-        '</div><div class="tag-fields">' +
-        field(i, "name", "Name", "e.g. The thread") +
-        field(i, "takes", "Takes in", "e.g. the Slack screenshots") +
-        field(i, "packs", "File this phase saves", "e.g. people.md") + '</div>';
-      planner.appendChild(t);
-      ["name", "takes", "packs"].forEach(function (k) { t.querySelector('[data-k="' + k + '"]').value = p[k] || ""; });
-    });
-  }
-  planner.addEventListener("input", function (e) {
-    var i = e.target.getAttribute("data-i"), k = e.target.getAttribute("data-k");
-    if (i === null) return;
-    phases[+i][k] = e.target.value; save();
-  });
-  planner.addEventListener("click", function (e) {
-    var rm = e.target.getAttribute("data-rm");
-    if (rm === null) return;
-    phases.splice(+rm, 1); save(); render();
-  });
-  document.getElementById("add").addEventListener("click", function () {
-    phases.push({}); save(); render();
-    var inputs = planner.querySelectorAll('[data-k="name"]');
-    inputs[inputs.length - 1].focus();
-  });
-  function planLines() {
-    return phases.filter(function (p) { return p.name || p.takes || p.packs; }).map(function (p, i) {
-      return (i + 1) + ". " + (p.name || "(phase)") + (p.takes ? " - takes in: " + p.takes : "") + (p.packs ? " - saves: " + p.packs : "");
-    });
-  }
-  document.getElementById("copy-plan").addEventListener("click", function () {
-    copyStarter(document.getElementById("starter-1").textContent);
-  });
-  render();
-
-  // Starter messages: copy the panel's text; the first one carries the planner's phases if any.
-  var PLAN_SLOT = "(your phases, or: I'm planning as I go)";
-  function copyStarter(text) {
-    var msg = "Copied. Paste it into Claude Code.";
-    if (text.indexOf(PLAN_SLOT) !== -1) {
-      var lines = planLines();
-      if (lines.length) { text = text.replace(PLAN_SLOT, "Here are my phases:\n" + lines.join("\n")); msg = "Copied, with your phases. Paste it into Claude Code."; }
-      else { text = text.replace(PLAN_SLOT, "I'm planning my phases as I go."); msg = "Copied, planning as you go. Paste it into Claude Code."; }
-    }
-    copy(text, msg);
-  }
   document.addEventListener("click", function (e) {
-    var b = e.target.closest ? e.target.closest("[data-copy]") : null;
+    var b = e.target.closest ? e.target.closest(".copy") : null;
     if (!b) return;
+    var pre = b.parentNode.querySelector("pre");
+    if (pre) { copy(pre.textContent); return; }
     var src = document.getElementById(b.getAttribute("data-copy"));
-    if (src) copyStarter(src.textContent);
+    if (src) copy(src.textContent);
   });
-
-  function copy(text, msg) {
-    var done = function () { toast(msg); };
+  function copy(text) {
+    var done = function () { toast("Copied. Paste it into Claude Code."); };
     var fallback = function () {
       var ta = document.createElement("textarea");
       ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";

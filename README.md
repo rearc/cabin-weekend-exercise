@@ -2,7 +2,7 @@
 
 The hands-on exercise for the context engineering section of the Rearc AI Labs workshop. You'll do it together on Day 1.
 
-**Start with [`START_HERE.html`](START_HERE.html)**: open it in your browser, or in VS Code's integrated browser by right-clicking it and choosing "Open in integrated browser". It has the brief, a phase planner, your inputs and hints. Don't start the exercise early.
+**Start with [`START_HERE.html`](START_HERE.html)**: open it in your browser, or in VS Code's integrated browser by right-clicking it and choosing "Open in integrated browser". It has the brief, the plan with the prompts to use, and hints. Don't start the exercise early.
 
 ## Before Day 1: check that Claude Code works
 
@@ -16,7 +16,7 @@ The hands-on exercise for the context engineering section of the Rearc AI Labs w
    What is this folder for? Answer in one sentence.
    ```
 
-4. You should get a one-sentence answer about a workshop exercise. If Claude also asks about your phases, that's for Day 1; you're done.
+4. You should get a one-sentence answer about a workshop exercise. That's it; you're done.
 
 If Claude Code doesn't open, can't sign you in, or gives no answer, tell your trainer before Day 1.
 
@@ -24,7 +24,7 @@ If Claude Code doesn't open, can't sign you in, or gives no answer, tell your tr
 
 | Path | What |
 |---|---|
-| `START_HERE.html` | The brief, the phase planner, hints and a Claude Code cheat sheet |
+| `START_HERE.html` | The brief, the plan with the prompts for each phase, and hints |
 | `inputs/` | The screenshots: the group chat, the cabin search and listings, the things-to-do guide |
 | `inputs/phone/` | Dana's phone: a message Claude will tell you about partway through. Leave it until then. |
 | `catch_up/` | Finished files for the first phases, only if your trainer points you there |
