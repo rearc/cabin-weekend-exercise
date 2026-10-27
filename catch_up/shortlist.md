@@ -11,6 +11,8 @@ Jun 11-13, 2 nights. Totals include cleaning and the pet fee. Headcount: 8 adult
 | Shoreline Retreat | North Shore | Lakefront | 10 | $1,380 | Iris |
 | Timber Ridge | Ridge | 25 min drive, hot tub | 12 | $1,210 | Hank |
 
+Every host's note: for more than 5 guests or a pet, the booking request must say how many adults, how many children, and what kind of pet.
+
 ## Out
 - Maple Loft: sleeps 8.
 - Ridgeview, Lakehouse on Loon: $1,800 for 2 nights before fees.

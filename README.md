@@ -2,12 +2,14 @@
 
 The hands-on exercise for the context engineering section of the Rearc AI Labs workshop. You'll do it together on Day 1.
 
-**Start with [`START_HERE.html`](START_HERE.html)**: open it in your browser (double-click it in your file explorer, or right-click it in VS Code and choose Reveal in Finder / Reveal in File Explorer). It has the brief, a phase planner, your inputs and hints. Don't start the exercise early.
+**Start with [`START_HERE.html`](START_HERE.html)**: open it in your browser, or in VS Code's integrated browser by right-clicking it and choosing "Open in integrated browser". It has the brief, a phase planner, your inputs and hints. Don't start the exercise early.
 
 ## Before Day 1: check that Claude Code works
 
 1. Clone this repository and open its folder in VS Code.
-2. Open Claude Code: click the Spark icon in the editor toolbar, or run `claude` in a terminal in this folder.
+2. Open Claude Code. Either way works for the whole exercise:
+   - **In VS Code:** click the orange Claude Code icon at the top right of the editor.
+   - **In a terminal (the CLI):** open a terminal in this folder. In VS Code, Terminal > New Terminal opens one there; from any other terminal, `cd` into the folder you cloned. Then type `claude` and press Enter.
 3. Type this and press Enter:
 
    ```
